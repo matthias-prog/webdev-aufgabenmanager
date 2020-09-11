@@ -2,7 +2,7 @@
 *Fachliche Beschreibung der Web-Anwendung...*
 
 ## QuickStart
-1. `git clone git@github.com:johakr/programmentwurf.git`
+1. `git clone https://github.com/matthias-prog/webdev-aufgabenmanager.git`
 2. `npm install`
 3. `npm start`
 4. http://localhost:3000
