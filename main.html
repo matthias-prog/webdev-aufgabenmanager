@@ -5,25 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://unpkg.com/tabulator-tables@4.8.1/dist/css/tabulator.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <style>
-        table {
-          font-family: arial, sans-serif;
-          border-collapse: collapse;
-          width: 100%;
-        }
-        
-        td, th {
-          border: 1px solid #dddddd;
-          text-align: left;
-          padding: 8px;
-        }
-        
-        tr:nth-child(even) {
-          background-color: #dddddd;
+        body{
+            margin: 30px;
         }
     </style>
+    
+    
 </head>
 <body>
+    <!--
     <div id="example-table"></div>
     <script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.8.1/dist/js/tabulator.min.js"></script>
     <script>
@@ -42,7 +34,16 @@
         autoColumns:true,
     });
     </script>
-    <table>
+    -->
+    <nav class="navbar navbar-light bg-light justify-content-between">
+        <button type="button" onclick="location.href='add.html';"  class="btn btn-primary">+ Add</button>
+        <form class="form-inline">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </nav>
+    <table class="table">
+    <thead>
     <tr>
         <th>Aufgabename</th>
         <th>Datum</th>
@@ -51,10 +52,12 @@
         <th>Mitarbeiter</th>
         <th></th>
     </tr>
+    </thead>
+    <tbody>
     <tr>
         <td>Test1</td>
         <td>12.01.200</td>
-        <td>diesist eine Testaufageb</td>
+        <td>dies ist eine Testaufgabe</td>
         <td>
             <select name="cars" id="cars">
             <option value="volvo">Volvo</option>
@@ -71,8 +74,35 @@
             <option value="audi">Abel</option>
             </select>
         </td>
-        <td><button type="button" onclick="location.href='edit.html';">Edit</button></td>
+        <td><button type="button" onclick="location.href='edit.html';" class="btn btn-warning">Edit</button>
+            <button type="button" class="btn btn-danger">Delete</button>
+        </td>
     </tr>
+    <tr>
+        <td>Test2</td>
+        <td>12.01.2000</td>
+        <td>dies ist eine Testaufgabe</td>
+        <td>
+            <select name="cars" id="cars">
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="mercedes">Mercedes</option>
+            <option value="audi">Audi</option>
+            </select>
+        </td>
+        <td>
+            <select name="cars" id="MA">
+            <option value="volvo">Müller</option>
+            <option value="saab">Fritz</option>
+            <option value="mercedes">Mustermann</option>
+            <option value="audi">Abel</option>
+            </select>
+        </td>
+        <td><button type="button" onclick="location.href='edit.html';" class="btn btn-warning">Edit</button>
+            <button type="button" class="btn btn-danger">Delete</button>
+        </td>
+    </tr>
+    </tbody>
     </table>
 </body>
 </html>
