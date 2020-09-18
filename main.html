@@ -14,21 +14,22 @@
 </head>
 <body>
     <nav class="navbar navbar-light bg-light justify-content-between">
-        <button type="button" onclick="location.href='add.html';"  class="btn btn-primary">+ Add</button>
+        <button type="button" onclick="location.href='add.html';"  class="btn btn-primary">📌 Add</button>
         <form class="form-inline">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Suchen">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">🏸</button>
         </form>
       </nav>
     <table class="table">
     <thead>
     <tr>
-        <th>Aufgabename</th>
-        <th>Datum</th>
-        <th>Beschreibung</th>
-        <th>Status</th>
-        <th>Mitarbeiter</th>
-        <th></th>
+        <th>📍 Aufgabe</th>
+        <th>⏱ Erstelldatum</th>
+        <th>📅 Abgabedatum</th>
+        <th>💭 Beschreibung</th>
+        <th>📈 Status</th>
+        <th>⏳ Bearbeitungszeit</th>
+        <th>🧑 Mitarbeiter</th>
     </tr>
     </thead>
     <tbody>
@@ -38,11 +39,16 @@
         <td>dies ist eine Testaufgabe</td>
         <td>
             <select name="status" id="status">
-                <option value="To do">To do</option>
-                <option value="in Bearbeitung">in Bearbeitung</option>
-                <option value="Fertig">Fertig</option>
-                <option value="Abgebrochen">Abgebrochen</option>
+                <option value="To do">⬜ vorgeschlagen</option>
+                <option value="Abgebrochen">🟥 abgebrochen</option>
+                <option value="in Bearbeitung">🟨 in Arbeit</option>
+                <option value="Fertig">🟩 erledigt</option>
             </select>
+        </td>
+        <td>
+                <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 83%;" aria-valuenow="84" aria-valuemin="0" aria-valuemax="100">2 Tage</div>
+            </div>
         </td>
         <td>
             <select name="mitarbeiter" id="MA">
@@ -53,8 +59,8 @@
             </select>
         </td>
         <td>
-            <button type="button" onclick="location.href='edit.html';" class="btn btn-warning">Edit</button>
-            <button type="button" class="btn btn-danger">Delete</button>
+            <button type="button" onclick="location.href='edit.html';" class="btn btn-warning">📝 Bearbeiten</button>
+            <button type="button" class="btn btn-danger">🗑 Löschen</button>
         </td>
     </tr>
     <tr>
@@ -63,10 +69,10 @@
         <td>dies ist eine Testaufgabe</td>
         <td>
             <select name="status" id="status2">
-                <option value="To do">To do</option>
-                <option value="in Bearbeitung">in Bearbeitung</option>
-                <option value="Fertig">Fertig</option>
-                <option value="Abgebrochen">Abgebrochen</option>
+                <option value="To do">⬜ vorgeschlagen</option>
+                <option value="Abgebrochen">🟥 abgebrochen</option>
+                <option value="in Bearbeitung">🟨 in Arbeit</option>
+                <option value="Fertig">🟩 erledigt</option>
             </select>
         </td>
         <td>
@@ -78,8 +84,13 @@
             </select>
         </td>
         <td>
-            <button type="button" onclick="location.href='edit.html';" class="btn btn-warning">Edit</button>
-            <button type="button" class="btn btn-danger">Delete</button>
+                <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 83%;" aria-valuenow="84" aria-valuemin="0" aria-valuemax="100">2 Tage</div>
+            </div>
+        </td>
+        <td>
+            <button type="button" onclick="location.href='edit.html';" class="btn btn-warning">📝 Bearbeiten</button>
+            <button type="button" class="btn btn-danger">🗑 Löschen</button>
         </td>
     </tr>
     </tbody>
