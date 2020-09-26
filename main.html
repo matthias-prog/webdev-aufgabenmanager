@@ -5,17 +5,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Übersicht</title>
-  <link href="https://unpkg.com/tabulator-tables@4.8.1/dist/css/tabulator.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link href="style.css" rel="stylesheet">
 </head>
 
 <body>
-  <div id="wrapper">
-    <header>Aufgabenmanager</header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
-      <ul class="navbar-nav">
+  <header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top justify-content-between">
+      <a class="navbar-brand" href="#">Aufgabenmanager</a>
+      <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
           <a class="nav-link" href="#">Startseite <span class="sr-only">(current)</span></a>
         </li>
@@ -27,10 +26,12 @@
         </li>
         <li class="nav-item">
       </ul>
-      <a style="color:red" ; class="nav-link d-flex justify-content-end" href="index.html">Abmelden <span
-          class="sr"></span></a>
+      <button class="btn btn-danger" type="submit">Abmelden</button>
     </nav>
-    <table class="table">
+  </header>
+
+  <main role="main" class="container-fluid">
+    <table class="table mt-5">
       <thead>
         <tr>
           <th>📍 Aufgabe</th>
@@ -51,7 +52,7 @@
           <td>14.01.2000</td>
           <td>dies ist eine Testaufgabe</td>
           <td>
-            <select name="status" id="status">
+            <select class="form-control form-control-sm" name="status" id="status">
               <option value="To do">⬜ vorgeschlagen</option>
               <option value="Abgebrochen">🟥 abgebrochen</option>
               <option value="in Bearbeitung">🟨 in Arbeit</option>
@@ -65,7 +66,7 @@
             </div>
           </td>
           <td>
-            <select name="mitarbeiter" id="MA">
+            <select class="form-control form-control-sm" name="mitarbeiter" id="MA">
               <option value="volvo">Müller</option>
               <option value="saab">Fritz</option>
               <option value="mercedes">Mustermann</option>
@@ -85,7 +86,7 @@
           <td>14.01.2000</td>
           <td>dies ist eine Testaufgabe</td>
           <td>
-            <select name="status" id="status2">
+            <select class="form-control form-control-sm" name="status" id="status2">
               <option value="To do">⬜ vorgeschlagen</option>
               <option value="Abgebrochen">🟥 abgebrochen</option>
               <option value="in Bearbeitung">🟨 in Arbeit</option>
@@ -99,7 +100,7 @@
             </div>
           </td>
           <td>
-            <select name="mitarbeiter" id="MA2">
+            <select class="form-control form-control-sm" name="mitarbeiter" id="MA2">
               <option value="volvo">Müller</option>
               <option value="saab">Fritz</option>
               <option value="mercedes">Mustermann</option>
@@ -115,7 +116,7 @@
         </tr>
       </tbody>
     </table>
-  </div>
+  </main>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
     crossorigin="anonymous"></script>
@@ -126,5 +127,6 @@
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
 </body>
+<!--Quelle: https://getbootstrap.com/docs/4.1/examples/sticky-footer-navbar/-->
 
 </html>
