@@ -58,7 +58,47 @@
             <tr>
                 <th>🧑 Mitarbeiter</th>
                 <th>📈 Status</th>
-                <th></th>
+                <!-- Bootstrap Modal "Add" -->
+                <th>       
+                  <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalAddUser">
+                  📌 Add
+                  </button>
+      
+                  <!-- Modal -->
+                  <div class="modal fade" id="modalAddUser" tabindex="-1" role="dialog" aria-labelledby="modalAddUserTitle" aria-hidden="true">
+                   <div class="modal-dialog modal-dialog-centered" role="form">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLongTitle">Benutzer hinzufügen</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                    <!-- Body Modal "Add" -->
+                    <div class="modal-body">
+                    <form action="benutzer.html">
+                        <div class="form-group">
+                          <label for="fname">Benutzername:</label>
+                          <input type="text" id="fname" name="fname" class="form-control">
+                        </div>
+                    <div class="form-group">
+                      <label for="lname">Passwort:</label>
+                      <input type="text" id="lname" name="lname" class="form-control">
+                    </div>
+                    <div class="form-group">
+                      <label for="pname">Passwort wiederholen:</label>
+                      <input type="text" id="pname" name="pname" class="form-control">
+                    </div>        
+                   <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
+                      <button type="submit" class="btn btn-warning">Änderungen speichern</button>
+                    </div>
+                    </form>
+                    </div>
+                    </div>
+                    </div>
+                </th>
+                <!-- Ende Modal "Add" -->
             </tr>
             </thead>
             <tbody>
@@ -66,9 +106,43 @@
                 <td>Tester</td>
                 <td>dies ist eine Testaufgabe</td>
                 </td>
-                <td><button type="button" onclick="location.href='mit.html';" class="btn btn-warning">📝 Bearbeiten</button>
-                    <button type="button" class="btn btn-danger">🗑 Löschen</button>
+                <!-- Bootstrap Modal "Bearbeiten" -->
+                <td>
+                  <!-- <button type="button" onclick="location.href='mit.html';" class="btn btn-warning">📝 Bearbeiten</button> -->
+                  <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalEditUser">📝 Bearbeiten</button>
+                  <button type="button" class="btn btn-danger">🗑 Löschen</button>
+
+                  <!-- Modal -->
+                  <div class="modal fade" id="modalEditUser" tabindex="-1" role="dialog" aria-labelledby="modalEditUserTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="form">
+                       <div class="modal-content">
+                         <div class="modal-header">
+                           <h5 class="modal-title" id="exampleModalLongTitle">Eintrag bearbeiten</h5>
+                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                             <span aria-hidden="true">&times;</span>
+                           </button>
+                         </div>
+                     <!-- Body Modal "Add" -->
+                     <div class="modal-body">
+                     <form action="benutzer.html">
+                         <div class="form-group">
+                           <label for="fname">Mitarbeiter:</label>
+                           <input type="text" id="fname" name="fname" class="form-control">
+                         </div>
+                     <div class="form-group">
+                       <label for="lname">Status:</label>
+                       <input type="text" id="lname" name="lname" class="form-control">
+                     </div>
+                     <div class="modal-footer">
+                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
+                       <button type="submit" class="btn btn-warning">Änderungen speichern</button>
+                     </div>
+                     </form>
+                     </div>
+                     </div>
+                     </div>
                 </td>
+                <!-- Ende Modal "Add" -->
             </tr>
         </form>
 
