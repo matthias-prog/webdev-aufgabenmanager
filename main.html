@@ -26,8 +26,8 @@
         </li>
         <li class="nav-item">
       </ul>
-       <a style="color:red" ; class="nav-link d-flex justify-content-end" href="index.html" onclick="alert('Abgemeldet!')">Abmelden <span
-          class="sr"></span></a>
+       <a style="color:red" ; class="nav-link d-flex justify-content-end" href="index.html" onclick="alert('Abgemeldet!')">Abmelden 
+        <span class="sr"></span></a>
     </nav>
   </header>
 
@@ -45,16 +45,16 @@
           <th></th>
           <th>       
             <!-- Bootstrap Modal "Add" -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalAddAufgabe">
             📌 Add
             </button>
 
             <!-- Modal -->
-            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal fade" id="ModalAddAufgabe" tabindex="-1" role="dialog" aria-labelledby="ModalAddAufgabeTitle" aria-hidden="true">
              <div class="modal-dialog modal-dialog-centered" role="form">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Aufgabe hinzufügen</h5>
+                    <h5 class="modal-title" id="ModalAddAufgabeLongTitle">Aufgabe hinzufügen</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -120,22 +120,60 @@
             </select>
           </td>
           <td>
-            <button type="button" onclick="location.href='edit.html';" class="btn btn-warning">📝</button>
+            
+            <!-- Bootstrap Modal "Edit" -->
+            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ModalEditAufgabe">📝</button>
+    
+                <!-- Modal -->
+                <div class="modal fade" id="ModalEditAufgabe" tabindex="-1" role="dialog" aria-labelledby="ModalEditAufgabeTitle" aria-hidden="true">
+                 <div class="modal-dialog modal-dialog-centered" role="form">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="ModalEditAufgabeLongTitle">Aufgabe bearbeiten</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                  <!-- Body Modal "Edit" -->
+                  <div class="modal-body">
+                    <div class="form-group">
+                        <label for="fname">Aufgabenname:</label>
+                        <input type="text" id="fname" name="fname" value="Test" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="lname">Datum:</label>
+                        <input type="text" id="lname" name="lname" value="12.01.2000" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="beschr">Beschreibung:</label>
+                        <textarea id="beschr" name="beschr" class="form-control">Dies ist eine Testaufgabe</textarea>
+                    </div>        
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
+                    <button type="submit" class="btn btn-primary">Änderungen speichern</button>
+                  </div>
+                  </form>
+                  </div>
+                  </div>
+                  </div>
+                  <!-- Ende Modal "Edit"-->
           </td>
+
+          <!-- Bootstrap Modal "Delete"-->
           <td>
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">🗑</button>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalDeleteAufgabe">🗑</button>
               <!-- Modal -->
-              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal fade" id="ModalDeleteAufgabe" tabindex="-1" aria-labelledby="ModalDeleteAufgabeTitel" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Wirklich löschen?</h5>
+                      <h5 class="modal-title" id="ModalDeleteAufgabeTitel">Wirklich löschen?</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
-                    <div class="modal-body">
-                    </div>
+                    
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
                       <button type="button" class="btn btn-primary" data-dismiss="modal">Löschen</button>
@@ -177,16 +215,55 @@
             </select>
           </td>
           <td>
-            <button type="button" onclick="location.href='edit.html';" class="btn btn-warning">📝</button>
+
+            <!-- Bootstrap Modal "Edit" -->
+            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ModalEditAufgabe2">📝</button>
+    
+                <!-- Modal -->
+                <div class="modal fade" id="ModalEditAufgabe2" tabindex="-1" role="dialog" aria-labelledby="ModalEditAufgabeTitle2" aria-hidden="true">
+                 <div class="modal-dialog modal-dialog-centered" role="form">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="ModalEditAufgabeLongTitle2">Aufgabe bearbeiten</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                  <!-- Body Modal "Edit" -->
+                  <div class="modal-body">
+                    <div class="form-group">
+                        <label for="fname">Aufgabenname:</label>
+                        <input type="text" id="fname" name="fname" value="Test" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="lname">Datum:</label>
+                        <input type="text" id="lname" name="lname" value="12.01.2000" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="beschr">Beschreibung:</label>
+                        <textarea id="beschr" name="beschr" class="form-control">Dies ist eine Testaufgabe</textarea>
+                    </div>        
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
+                    <button type="submit" class="btn btn-primary">Änderungen speichern</button>
+                  </div>
+                  </form>
+                  </div>
+                  </div>
+                  </div>
+                  <!-- Ende Modal "Edit"-->
           </td>
+
+          <!-- Bootstrap Modal "Delete" -->
           <td>
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">🗑</button>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalDeleteAufgabe2">🗑</button>
               <!-- Modal -->
-              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal fade" id="ModalDeleteAufgabe2" tabindex="-1" aria-labelledby="ModalDeleteAufgabeTitel2" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Wirklich löschen?</h5>
+                      <h5 class="modal-title" id="ModalDeleteAufgabeTitel2">Wirklich löschen?</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
