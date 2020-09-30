@@ -19,15 +19,11 @@
           <a class="nav-link" href="#">Startseite <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="historie.html">Historie</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" href="benutzer.html">Benutzer</a>
         </li>
         <li class="nav-item">
       </ul>
-      <a style="color:red" ; class="nav-link d-flex justify-content-end" href="index.html"
-        onclick="alert('Abgemeldet!')">Abmelden
+      <a style="color:red" ; class="nav-link d-flex justify-content-end" href="index.html">Abmelden
         <span class="sr"></span></a>
     </nav>
   </header>
@@ -78,13 +74,24 @@
                         <textarea id="beschr" name="beschr" class="form-control"></textarea>
                       </div>
                   </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
-                    <button type="submit" class="btn btn-primary">Änderungen speichern</button>
+                  <div class="form-group">
+                    <label for="lname">Datum:</label>
+                    <br>
+                    <input type="date" id="day" name="day" value="2020-09-29" min="2017-01-01" max="2022-01-01">
                   </div>
-                  </form>
+                  <div class="form-group">
+                    <label for="beschr">Beschreibung:</label>
+                    <textarea id="beschr" name="beschr" class="form-control"></textarea>
+                  </div>
                 </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
+                  <button type="submit" class="btn btn-primary">Hinzufügen</button>
+                </div>
+                </form>
               </div>
+            </div>
+            </div>
             </div>
           </th>
           <!-- Ende Modal "Add" -->
