@@ -6,6 +6,7 @@
     <title>Document</title>
     <link href="https://unpkg.com/tabulator-tables@4.8.1/dist/css/tabulator.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="style.css" rel="stylesheet">
     <style>
         body{
             margin: 30px;
@@ -26,13 +27,13 @@
         </li>
         <li class="nav-item">
       </ul>
-      <a style="color:red" ; class="nav-link d-flex justify-content-end" href="index.html">Abmelden
-        <span class="sr"></span></a>
+     <a style="color:gold" ; class="nav-link d-flex justify-content-end" href="index.html"><strong>Abmelden</strong><span class="sr"></span></a>
+    
     </nav>
   </header>
 
     <form action="main.html">
-        <table class="table mt-5">
+        <table class="table mt-5" id="wrapper">
             <thead>
             <tr>
                 <th>🧑 Mitarbeiter</th>
@@ -48,7 +49,7 @@
                    <div class="modal-dialog modal-dialog-centered" role="form">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLongTitle">Benutzer hinzufügen</h5>
+                          <h5 class="modal-title" id="exampleModalLongTitle" style="color:black">Benutzer hinzufügen</h5>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                           </button>
@@ -57,15 +58,15 @@
                     <div class="modal-body">
                     <form action="benutzer.html">
                         <div class="form-group">
-                          <label for="fname">Benutzername:</label>
+                          <label for="fname" style="color:black">Benutzername:</label>
                           <input type="text" id="fname" name="fname" class="form-control">
                         </div>
                     <div class="form-group">
-                      <label for="lname">Passwort:</label>
+                      <label for="lname" style="color:black">Passwort:</label>
                       <input type="text" id="lname" name="lname" class="form-control">
                     </div>
                     <div class="form-group">
-                      <label for="pname">Passwort wiederholen:</label>
+                      <label for="pname" style="color:black">Passwort wiederholen:</label>
                       <input type="text" id="pname" name="pname" class="form-control">
                     </div>        
                    <div class="modal-footer">
@@ -101,7 +102,7 @@
                   <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="ModalDeleteAufgabeTitel2">Wirklich löschen?</h5>
+                        <h5 class="modal-title" id="ModalDeleteAufgabeTitel2" style="color:black">Wirklich löschen?</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                         </button>
@@ -121,7 +122,7 @@
                     <div class="modal-dialog modal-dialog-centered" role="form">
                        <div class="modal-content">
                          <div class="modal-header">
-                           <h5 class="modal-title" id="exampleModalLongTitle">Eintrag bearbeiten</h5>
+                           <h5 class="modal-title" id="exampleModalLongTitle" style="color:black">Eintrag bearbeiten</h5>
                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                              <span aria-hidden="true">&times;</span>
                            </button>
@@ -130,11 +131,11 @@
                      <div class="modal-body">
                      <form action="benutzer.html">
                          <div class="form-group">
-                           <label for="fname">Mitarbeiter:</label>
+                           <label for="fname" style="color:black">Mitarbeiter:</label>
                            <input type="text" id="fname" name="fname" class="form-control">
                          </div>
                      <div class="form-group">
-                       <label for="lname">Status:</label>
+                       <label for="lname" style="color:black">Status:</label>
                        <input type="text" id="lname" name="lname" class="form-control">
                      </div>
                      <div class="modal-footer">
