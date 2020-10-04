@@ -77,7 +77,7 @@ const insertRow = (row) => {
       <div class="modal-dialog modal-dialog-centered" role="form">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="ModalEditAufgabeLongTitle${zeilencounter}">Aufgabe bearbeiten</h5>
+            <h5 class="modal-title" id="ModalEditAufgabeLongTitle${zeilencounter}" style="color:black">Aufgabe bearbeiten</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -85,22 +85,22 @@ const insertRow = (row) => {
 
           <div class="modal-body">
             <div class="form-group">
-              <label for="fname">Aufgabenname:</label>
+              <label for="fname" style="color:black">Aufgabenname:</label>
               <input type="text" id="fname" name="fname" value="${row.name}" class="form-control">
             </div>
             <div class="form-group">
-              <label for="lname">Datum:</label>
+              <label for="lname" style="color:black">Datum:</label>
               <br>
               <input type="date" id="day" name="day" value="${row.abgabedatum}" min="2017-01-01" max="2022-01-01">
             </div>
             <div class="form-group">
-              <label for="beschr">Beschreibung:</label>
+              <label for="beschr" style="color:black">Beschreibung:</label>
               <textarea id="beschr" name="beschr" class="form-control">${row.beschreibung}</textarea>
             </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
-            <button type="submit" class="btn btn-primary">Änderungen speichern</button>
+            <button type="submit" class="btn btn-primary" data-dismiss="modal">Änderungen speichern</button>
           </div>
           </form>
         </div>
@@ -119,7 +119,7 @@ const insertRow = (row) => {
         <div class="modal-dialog ">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="ModalDeleteAufgabeTitel${zeilencounter}">Wirklich löschen?</h5>
+              <h5 class="modal-title" id="ModalDeleteAufgabeTitel${zeilencounter}" data-dismiss="modal">Wirklich löschen?</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
