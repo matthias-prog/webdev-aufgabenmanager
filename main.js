@@ -119,7 +119,7 @@ const insertRow = (row) => {
         <div class="modal-dialog ">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="ModalDeleteAufgabeTitel${zeilencounter}" data-dismiss="modal">Wirklich löschen?</h5>
+              <h5 class="modal-title" id="ModalDeleteAufgabeTitel${zeilencounter}" style="color:black">Wirklich löschen?</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
