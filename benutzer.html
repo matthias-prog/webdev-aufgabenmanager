@@ -86,13 +86,37 @@
                 <td>dies ist eine Testaufgabe</td>
                 </td>
                 <!-- Bootstrap Modal "Bearbeiten" -->
+                <!-- Bootstrap Modal "Löschen" -->
                 <!-- Quelle: https://getbootstrap.com/docs/4.0/components/modal/ -->
                 <td>
                   <!-- <button type="button" onclick="location.href='mit.html';" class="btn btn-warning">📝 Bearbeiten</button> -->
                   <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalEditUser">📝</button>
-                  <button type="button" class="btn btn-danger">🗑</button>
+                    
+                  <button type="button" class="btn btn-danger" data-toggle="modal"
+                      data-target="#ModalDeleteAufgabe2">🗑</button>
+                    
+                   <!-- Modal "Löschen" -->
+                  <div class="modal fade" id="ModalDeleteAufgabe2" tabindex="-1" aria-labelledby="ModalDeleteAufgabeTitel2"
+                  aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="ModalDeleteAufgabeTitel2">Wirklich löschen?</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Löschen</button>
+                      </div>
+                    </div>
+                  </div>
+               </div>            
 
-                  <!-- Modal -->
+                  <!-- Modal "Bearbeiten"-->
                   <div class="modal fade" id="modalEditUser" tabindex="-1" role="dialog" aria-labelledby="modalEditUserTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="form">
                        <div class="modal-content">
@@ -120,7 +144,7 @@
                      </form>
                      </div>
                      </div>
-                     </div>
+                     </div>    
                 </td>
                 <!-- Ende Modal "Add" -->
             </tr>
