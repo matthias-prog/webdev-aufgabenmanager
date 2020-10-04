@@ -57,7 +57,7 @@ const insertRow = (row) => {
 
   const timeremaininghtml = `<td>
                                 <div class="progress">
-                                    <div class="progress-bar" role="progressbar" style="width: 83%;" aria-valuenow="84" aria-valuemin="0"aria-valuemax="100">${row.giveTimeRemaining()}Tage</div>
+                                    <div class="progress-bar" role="progressbar" style="width: 83%;" aria-valuenow="84" aria-valuemin="0"aria-valuemax="100">${row.giveTimeRemaining()} Tage</div>
                                 </div>
                             </td>`;
 
@@ -138,3 +138,7 @@ const insertRow = (row) => {
   zeilencounter++;
 }
 insertRow(row1);
+
+for (let i = 0; i < 300; i++) {
+  insertRow(row1);
+}
