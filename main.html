@@ -13,23 +13,22 @@
 <body>
   <header>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top justify-content-between">
-      <a class="navbar-brand" href="#">Aufgabenmanager</a>
+       <a style="color:blueviolet" class="navbar-brand" href="#"><em>Aufgabenmanager</em></a>
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Startseite <span class="sr-only">(current)</span></a>
+           <a style="color:whitesmoke" class="nav-link" href="#"><strong>Startseite</strong> <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="benutzer.html">Benutzer</a>
+           <a class="nav-link" href="benutzer.html"><strong>Benutzer</strong></a>
         </li>
         <li class="nav-item">
       </ul>
-      <a style="color:red" ; class="nav-link d-flex justify-content-end" href="index.html">Abmelden
-        <span class="sr"></span></a>
+      <a style="color:gold" ; class="nav-link d-flex justify-content-end" href="index.html"><strong>Abmelden</strong><span class="sr"></span></a>
     </nav>
   </header>
 
   <main role="main" class="container-fluid">
-    <table class="table mt-5">
+    <table class="table mt-5" id="wrapper">
       <thead>
         <tr>
           <th>📍 Aufgabe</th>
@@ -53,7 +52,7 @@
               <div class="modal-dialog modal-dialog-centered" role="form">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="ModalAddAufgabeLongTitle">Aufgabe hinzufügen</h5>
+                    <h5 class="modal-title" id="ModalAddAufgabeLongTitle" style="color:black">Aufgabe hinzufügen</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -62,16 +61,16 @@
                   <div class="modal-body">
                     <form action="main.html">
                       <div class="form-group">
-                        <label for="fname">Aufgabenname:</label>
+                        <label for="fname" style="color:black">Aufgabenname:</label>
                         <input type="text" id="fname" name="fname" class="form-control">
                       </div>
                       <div class="form-group">
-                        <label for="lname">Datum:</label>
+                        <label for="lname" style="color:black">Datum:</label>
                         <br>
                         <input type="date" id="day" name="day" value="2020-09-29" min="2017-01-01" max="2022-01-01">
                       </div>
                       <div class="form-group">
-                        <label for="beschr">Beschreibung:</label>
+                        <label for="beschr" style="color:black">Beschreibung:</label>
                         <textarea id="beschr" name="beschr" class="form-control"></textarea>
                       </div>
                   </div>
@@ -132,7 +131,7 @@
               <div class="modal-dialog modal-dialog-centered" role="form">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="ModalEditAufgabeLongTitle">Aufgabe bearbeiten</h5>
+                    <h5 class="modal-title" id="ModalEditAufgabeLongTitle" style="color:black">Aufgabe bearbeiten</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -140,22 +139,22 @@
                   <!-- Body Modal "Edit" -->
                   <div class="modal-body">
                     <div class="form-group">
-                      <label for="fname">Aufgabenname:</label>
+                      <label for="fname" style="color:black">Aufgabenname:</label>
                       <input type="text" id="fname" name="fname" value="Test" class="form-control">
                     </div>
                     <div class="form-group">
-                      <label for="lname">Datum:</label>
+                      <label for="lname" style="color:black">Datum:</label>
                       <br>
                       <input type="date" id="day" name="day" value="2020-09-29" min="2017-01-01" max="2022-01-01">
                     </div>
                     <div class="form-group">
-                      <label for="beschr">Beschreibung:</label>
+                      <label for="beschr" style="color:black">Beschreibung:</label>
                       <textarea id="beschr" name="beschr" class="form-control">Dies ist eine Testaufgabe</textarea>
                     </div>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
-                    <button type="submit" class="btn btn-primary">Änderungen speichern</button>
+                    <button type="submit" class="btn btn-primary" data-dismiss="modal">Änderungen speichern</button>
                   </div>
                   </form>
                 </div>
@@ -174,7 +173,7 @@
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="ModalDeleteAufgabeTitel">Wirklich löschen?</h5>
+                    <h5 class="modal-title" id="ModalDeleteAufgabeTitel" data-dismiss="modal" style="color:black">Wirklich löschen?</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -232,7 +231,7 @@
               <div class="modal-dialog modal-dialog-centered" role="form">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="ModalEditAufgabeLongTitle2">Aufgabe bearbeiten</h5>
+                    <h5 class="modal-title" id="ModalEditAufgabeLongTitle2" style="color:black">Aufgabe bearbeiten</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -240,22 +239,22 @@
                   <!-- Body Modal "Edit" -->
                   <div class="modal-body">
                     <div class="form-group">
-                      <label for="fname">Aufgabenname:</label>
+                      <label for="fname" style="color:black">Aufgabenname:</label>
                       <input type="text" id="fname" name="fname" value="Test" class="form-control">
                     </div>
                     <div class="form-group">
-                      <label for="lname">Datum:</label>
+                      <label for="lname" style="color:black">Datum:</label>
                       <br>
                       <input type="date" id="day" name="day" value="2020-09-29" min="2017-01-01" max="2022-01-01">
                     </div>
                     <div class="form-group">
-                      <label for="beschr">Beschreibung:</label>
+                      <label for="beschr" style="color:black">Beschreibung:</label>
                       <textarea id="beschr" name="beschr" class="form-control">Dies ist eine Testaufgabe</textarea>
                     </div>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
-                    <button type="submit" class="btn btn-primary">Änderungen speichern</button>
+                    <button type="submit" class="btn btn-primary" data-dismiss="modal">Änderungen speichern</button>
                   </div>
                   </form>
                 </div>
@@ -274,7 +273,7 @@
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="ModalDeleteAufgabeTitel2">Wirklich löschen?</h5>
+                    <h5 class="modal-title" id="ModalDeleteAufgabeTitel2" style="color:black">Wirklich löschen?</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
