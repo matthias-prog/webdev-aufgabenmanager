@@ -22,12 +22,12 @@ let row1 = new Row('classtest', '2020-01-22', '2020-02-25', 'ein test von klasse
 
 const insertRow = (row) => {
   const titlehtml = `<tr><td>${row.name}</td>`;
-  const datumhtml = `<td>${row.erstelldatum}</td>`;
-  const datepickerhtml = `<td>
-                                <form action="/action_page.php">
-                                    <input type="date" name="day" value="${row.abgabedatum}" min="2017-01-01" max="2022-01-01">
-                                </form>
-                            </td>`;
+ // const datumhtml = `<td>${row.erstelldatum}</td>`;
+ // const datepickerhtml = `<td>
+ //                               <form action="/action_page.php">
+ //                                   <input type="date" name="day" value="${row.abgabedatum}" min="2017-01-01" max="2022-01-01">
+ //                               </form>
+ //                           </td>`;
   const beschreibunghtml = `<td>${row.beschreibung}</td>`;
 
   let statushtml = `<td>
@@ -94,7 +94,7 @@ const insertRow = (row) => {
               <input type="text" id="fname" name="fname" value="${row.name}" class="form-control">
             </div>
             <div class="form-group">
-              <label for="lname" style="color:black">Datum:</label>
+              <label for="lname" style="color:black">Abgabedatum:</label>
               <br>
               <input type="date" id="day" name="day" value="${row.abgabedatum}" min="2017-01-01" max="2022-01-01">
             </div>
@@ -102,6 +102,15 @@ const insertRow = (row) => {
               <label for="beschr" style="color:black">Beschreibung:</label>
               <textarea id="beschr" name="beschr" class="form-control">${row.beschreibung}</textarea>
             </div>
+            <div class="form-group">
+
+                      <select class="form-control form-control-sm" name="mitarbeiter" id="MA6">
+                        <option value="name1">Müller</option>
+                        <option value="name2">Fritz</option>
+                        <option value="name3">Mustermann</option>
+                        <option value="name4">Abel</option>
+                      </select>
+              </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
@@ -139,7 +148,7 @@ const insertRow = (row) => {
       </div>
     </td>`;
 
-  tbody.insertAdjacentHTML('beforeend', titlehtml + datumhtml + datepickerhtml + beschreibunghtml + statushtml + timeremaininghtml + mitarbeiterhtml + modaledit + modaldelete);
+  tbody.insertAdjacentHTML('beforeend', titlehtml + beschreibunghtml + statushtml + timeremaininghtml + mitarbeiterhtml + modaledit + modaldelete);
   zeilencounter++;
 }
 insertRow(row1);
