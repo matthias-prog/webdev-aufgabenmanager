@@ -1,17 +1,24 @@
 function Row(name, erstelldatum, abgabedatum, beschreibung, status, benutzerID) {
   this.name = name;
-  this.erstelldatum = new Date().toISOString().slice(0, 10);
+  this.erstelldatum = erstelldatum;
   this.abgabedatum = abgabedatum;
   this.beschreibung = beschreibung;
   this.status = status;
   this.benutzerID = benutzerID;
-  var firstDateParts = erstelldatum.split("-");
-  var secondDateParts = abgabedatum.split("-");
-  var oneDay = 24 * 60 * 60 * 1000;
-  var firstDate = new Date(+firstDateParts[0], firstDateParts[1] - 1, firstDateParts[2]);
-  var secondDate = new Date(+secondDateParts[0], secondDateParts[1] - 1, secondDateParts[2]);
+  let currentDate = new Date().toISOString().slice(0, 10);
+  let currentDateParts = currentDate.split("-");
+  let erstellDateParts = erstelldatum.split("-");
+  let abgabeDateParts = abgabedatum.split("-");
+  let oneDay = 24 * 60 * 60 * 1000;
+  let currentDate2 = new Date(+currentDateParts[0], currentDateParts[1] - 1, currentDateParts[2]);
+  let abgabeDate = new Date(+abgabeDateParts[0], abgabeDateParts[1] - 1, abgabeDateParts[2]);
+  let erstellDate = new Date(+erstellDateParts[0], erstellDateParts[1] - 1, erstellDateParts[2]);
   this.giveTimeRemaining = function () {
-    return Math.round(Math.abs((firstDate.getTime() - secondDate.getTime()) / (oneDay)));
+    return Math.round(Math.abs((currentDate2.getTime() - abgabeDate.getTime()) / (oneDay)));
+  }
+  this.givePercentageElapsed = function () {
+    const gesamteZeit = Math.round(Math.abs((abgabeDate.getTime() - erstellDate.getTime()) / (oneDay)));
+    return Math.round((1 - (this.giveTimeRemaining() / gesamteZeit)) * 100);
   }
 }
 
@@ -64,14 +71,16 @@ const insertRow = (row) => {
   }
   statushtml += ` </select></td>`;
 
+  console.log(row.givePercentageElapsed());
   const timeremaininghtml = `<td>
                                 <div class="progress">
-                                    <div class="progress-bar" role="progressbar" style="width: 83%;" aria-valuenow="84" aria-valuemin="0"aria-valuemax="100">${row.giveTimeRemaining()} Tage</div>
+                                    <div class="progress-bar" role="progressbar" style="width: ${row.givePercentageElapsed()}%;" aria-valuenow="${row.givePercentageElapsed()}" aria-valuemin="0"aria-valuemax="100">${row.giveTimeRemaining()} Tage</div>
                                 </div>
                             </td>`;
 
   let benutzerhtml = `<select class="form-control form-control-sm" name="mitarbeiter" id="MA${zeilencounter}">`;
 
+  console.log(benutzerSammlung);
   benutzerSammlung.forEach(element => {
     if (element.id === row.benutzerID) {
       benutzerhtml = benutzerhtml + `<option selected value="${element.benutzerName}">${element.benutzerName}</option>`
@@ -81,6 +90,8 @@ const insertRow = (row) => {
 
   });
   benutzerhtml = benutzerhtml + `</select>`;
+
+  console.log(benutzerhtml);
 
   const modaledit = `<td>
     <button type="button" class="btn btn-warning" data-toggle="modal"
@@ -99,8 +110,8 @@ const insertRow = (row) => {
 
           <div class="modal-body">
             <div class="form-group">
-              <label for="fname" style="color:black">Aufgabenname:</label>
-              <input type="text" id="fname" name="fname" value="${row.name}" class="form-control">
+              <label for="fname${zeilencounter}" style="color:black">Aufgabenname:</label>
+              <input type="text" id="fname${zeilencounter}" name="fname" value="${row.name}" class="form-control">
             </div>
             <div class="form-group">
               <label for="lname" style="color:black">Abgabedatum:</label>
@@ -112,6 +123,7 @@ const insertRow = (row) => {
               <textarea id="beschr" name="beschr" class="form-control">${row.beschreibung}</textarea>
             </div>
             <div class="form-group">
+              <label for="beschr" style="color:black">Mitarbeiter:</label>
                 ${benutzerhtml}
             </div>
           </div>
@@ -169,5 +181,3 @@ fetch("/aufgaben").then((res) => {
     insertRow(aufgabeROW);
   })
 });
-let row1 = new Row('classtest', '2020-01-22', '2020-02-25', 'ein test von klassen', 3, 1);
-insertRow(row1);
