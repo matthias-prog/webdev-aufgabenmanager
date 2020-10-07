@@ -1,13 +1,10 @@
-let tbody = document.getElementById('hook');
-let zeilencounter = 3;
-
-function Row(name, erstelldatum, abgabedatum, beschreibung, status, benutzer) {
+function Row(name, erstelldatum, abgabedatum, beschreibung, status, benutzerID) {
   this.name = name;
   this.erstelldatum = new Date().toISOString().slice(0, 10);
   this.abgabedatum = abgabedatum;
   this.beschreibung = beschreibung;
   this.status = status;
-  this.benutzer = benutzer;
+  this.benutzerID = benutzerID;
   var firstDateParts = erstelldatum.split("-");
   var secondDateParts = abgabedatum.split("-");
   var oneDay = 24 * 60 * 60 * 1000;
@@ -17,8 +14,22 @@ function Row(name, erstelldatum, abgabedatum, beschreibung, status, benutzer) {
     return Math.round(Math.abs((firstDate.getTime() - secondDate.getTime()) / (oneDay)));
   }
 }
-let row1 = new Row('classtest', '2020-01-22', '2020-02-25', 'ein test von klassen', 3, ['Gerd', 'Hans', 'Peter']);
 
+let benutzerSammlung = [];
+
+fetch("/benutzer").then((res) => {
+  console.log(res.ok);
+  if (!res.ok) return Promise.reject(res.status);
+
+  return res.json();
+}).then((benutzers) => {
+  benutzers.forEach((benutzer) => {
+    benutzerSammlung.push(benutzer);
+  })
+});
+
+let zeilencounter = 0;
+let tbody = document.getElementById('hook');
 const insertRow = (row) => {
   const titlehtml = `<tr><td>${row.name}</td>`;
   const beschreibunghtml = `<td>${row.beschreibung}</td>`;
@@ -61,8 +72,13 @@ const insertRow = (row) => {
 
   let benutzerhtml = `<select class="form-control form-control-sm" name="mitarbeiter" id="MA${zeilencounter}">`;
 
-  row.benutzer.forEach(element => {
-    benutzerhtml = benutzerhtml + `<option value="${element}">${element}</option>`
+  benutzerSammlung.forEach(element => {
+    if (element.id === row.benutzerID) {
+      benutzerhtml = benutzerhtml + `<option selected value="${element.benutzerName}">${element.benutzerName}</option>`
+    } else {
+      benutzerhtml = benutzerhtml + `<option value="${element.benutzerName}">${element.benutzerName}</option>`
+    }
+
   });
   benutzerhtml = benutzerhtml + `</select>`;
 
@@ -138,20 +154,9 @@ const insertRow = (row) => {
   tbody.insertAdjacentHTML('beforeend', titlehtml + beschreibunghtml + statushtml + timeremaininghtml + modaledit + modaldelete);
   zeilencounter++;
 }
-insertRow(row1);
 
-let benutzerSammlung = [];
 
-fetch("/benutzer").then((res) => {
-  console.log(res.ok);
-  if (!res.ok) return Promise.reject(res.status);
 
-  return res.json();
-}).then((benutzers) => {
-  benutzers.forEach((benutzer) => {
-    benutzerSammlung.push(benutzer.benutzerName);
-  })
-});
 
 fetch("/aufgaben").then((res) => {
   console.log(res.ok);
@@ -160,8 +165,9 @@ fetch("/aufgaben").then((res) => {
   return res.json();
 }).then((aufgaben) => {
   aufgaben.forEach((aufgabe) => {
-    let aufgabeROW = new Row(aufgabe.aufgabenName, aufgabe.erstelldatum, aufgabe.abgabedatum, aufgabe.beschreibung, aufgabe.stand, benutzerSammlung);
+    let aufgabeROW = new Row(aufgabe.aufgabenName, aufgabe.erstelldatum, aufgabe.abgabedatum, aufgabe.beschreibung, aufgabe.stand, aufgabe.benutzerID);
     insertRow(aufgabeROW);
   })
 });
-
+let row1 = new Row('classtest', '2020-01-22', '2020-02-25', 'ein test von klassen', 3, 1);
+insertRow(row1);
