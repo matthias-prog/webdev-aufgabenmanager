@@ -144,7 +144,28 @@ const insertRow = (row) => {
 }
 insertRow(row1);
 
+let benutzerSammlung = [];
+
+fetch("/benutzer").then((res) => {
+  console.log(res.ok);
+  if (!res.ok) return Promise.reject(res.status);
+
+  return res.json();
+}).then((benutzers) => {
+  benutzers.forEach((benutzer) => {
+    benutzerSammlung.push(benutzer.benutzerName);
+  })
+});
+
 fetch("/aufgaben").then((res) => {
   console.log(res.ok);
+  if (!res.ok) return Promise.reject(res.status);
+
+  return res.json();
+}).then((aufgaben) => {
+  aufgaben.forEach((aufgabe) => {
+    let aufgabeROW = new Row(aufgabe.aufgabenName, aufgabe.erstelldatum, aufgabe.abgabedatum, aufgabe.beschreibung, aufgabe.stand, benutzerSammlung);
+    insertRow(aufgabeROW);
+  })
 });
 
