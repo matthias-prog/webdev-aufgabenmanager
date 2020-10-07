@@ -3,19 +3,19 @@ let zeilencounter = 3;
 
 function Row(name, erstelldatum, abgabedatum, beschreibung, status, mitarbeiter) {
   this.name = name;
-  this.erstelldatum = erstelldatum;
+  this.erstelldatum = new Date().toISOString().slice(0, 10);
   this.abgabedatum = abgabedatum;
   this.beschreibung = beschreibung;
   this.status = status;
   this.mitarbeiter = mitarbeiter;
   var firstDateParts = erstelldatum.split("-");
   var secondDateParts = abgabedatum.split("-");
-  var oneDay = 24*60*60*1000;
-  var firstDate = new Date(+firstDateParts[0],firstDateParts[1] - 1,firstDateParts[2]);
-  var secondDate = new Date(+secondDateParts[0],secondDateParts[1] - 1,secondDateParts[2]);
+  var oneDay = 24 * 60 * 60 * 1000;
+  var firstDate = new Date(+firstDateParts[0], firstDateParts[1] - 1, firstDateParts[2]);
+  var secondDate = new Date(+secondDateParts[0], secondDateParts[1] - 1, secondDateParts[2]);
   this.giveTimeRemaining = function () {
     //funktioniert noch nicht
-    return Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
+    return Math.round(Math.abs((firstDate.getTime() - secondDate.getTime()) / (oneDay)));
   }
 }
 let row1 = new Row('classtest', '2020-01-22', '2020-02-25', 'ein test von klassen', 3, ['Gerd', 'Hans', 'Peter']);
@@ -147,3 +147,4 @@ insertRow(row1);
 for (let i = 0; i < 300; i++) {
   insertRow(row1);
 }
+
