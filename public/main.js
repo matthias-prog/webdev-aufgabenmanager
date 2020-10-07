@@ -1,20 +1,19 @@
 let tbody = document.getElementById('hook');
 let zeilencounter = 3;
 
-function Row(name, erstelldatum, abgabedatum, beschreibung, status, mitarbeiter) {
+function Row(name, erstelldatum, abgabedatum, beschreibung, status, benutzer) {
   this.name = name;
   this.erstelldatum = new Date().toISOString().slice(0, 10);
   this.abgabedatum = abgabedatum;
   this.beschreibung = beschreibung;
   this.status = status;
-  this.mitarbeiter = mitarbeiter;
+  this.benutzer = benutzer;
   var firstDateParts = erstelldatum.split("-");
   var secondDateParts = abgabedatum.split("-");
   var oneDay = 24 * 60 * 60 * 1000;
   var firstDate = new Date(+firstDateParts[0], firstDateParts[1] - 1, firstDateParts[2]);
   var secondDate = new Date(+secondDateParts[0], secondDateParts[1] - 1, secondDateParts[2]);
   this.giveTimeRemaining = function () {
-    //funktioniert noch nicht
     return Math.round(Math.abs((firstDate.getTime() - secondDate.getTime()) / (oneDay)));
   }
 }
@@ -22,12 +21,6 @@ let row1 = new Row('classtest', '2020-01-22', '2020-02-25', 'ein test von klasse
 
 const insertRow = (row) => {
   const titlehtml = `<tr><td>${row.name}</td>`;
- // const datumhtml = `<td>${row.erstelldatum}</td>`;
- // const datepickerhtml = `<td>
- //                               <form action="/action_page.php">
- //                                   <input type="date" name="day" value="${row.abgabedatum}" min="2017-01-01" max="2022-01-01">
- //                               </form>
- //                           </td>`;
   const beschreibunghtml = `<td>${row.beschreibung}</td>`;
 
   let statushtml = `<td>
@@ -66,12 +59,12 @@ const insertRow = (row) => {
                                 </div>
                             </td>`;
 
-  let mitarbeiterhtml = `<td><select class="form-control form-control-sm" name="mitarbeiter" id="MA${zeilencounter}">`;
+  let benutzerhtml = `<select class="form-control form-control-sm" name="mitarbeiter" id="MA${zeilencounter}">`;
 
-  row.mitarbeiter.forEach(element => {
-    mitarbeiterhtml = mitarbeiterhtml + `<option value="${element}">${element}</option>`
+  row.benutzer.forEach(element => {
+    benutzerhtml = benutzerhtml + `<option value="${element}">${element}</option>`
   });
-  mitarbeiterhtml = mitarbeiterhtml + `</select></td>`;
+  benutzerhtml = benutzerhtml + `</select>`;
 
   const modaledit = `<td>
     <button type="button" class="btn btn-warning" data-toggle="modal"
@@ -103,14 +96,8 @@ const insertRow = (row) => {
               <textarea id="beschr" name="beschr" class="form-control">${row.beschreibung}</textarea>
             </div>
             <div class="form-group">
-
-                      <select class="form-control form-control-sm" name="mitarbeiter" id="MA6">
-                        <option value="name1">Müller</option>
-                        <option value="name2">Fritz</option>
-                        <option value="name3">Mustermann</option>
-                        <option value="name4">Abel</option>
-                      </select>
-              </div>
+                ${benutzerhtml}
+            </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
@@ -148,7 +135,7 @@ const insertRow = (row) => {
       </div>
     </td>`;
 
-  tbody.insertAdjacentHTML('beforeend', titlehtml + beschreibunghtml + statushtml + timeremaininghtml + mitarbeiterhtml + modaledit + modaldelete);
+  tbody.insertAdjacentHTML('beforeend', titlehtml + beschreibunghtml + statushtml + timeremaininghtml + modaledit + modaldelete);
   zeilencounter++;
 }
 insertRow(row1);
