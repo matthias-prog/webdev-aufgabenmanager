@@ -144,7 +144,7 @@ const insertRow = (row) => {
 }
 insertRow(row1);
 
-for (let i = 0; i < 300; i++) {
-  insertRow(row1);
-}
+fetch("/aufgaben").then((res) => {
+  console.log(res.ok);
+});
 
