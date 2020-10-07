@@ -25,7 +25,6 @@ function Row(name, erstelldatum, abgabedatum, beschreibung, status, benutzerID) 
 let benutzerSammlung = [];
 
 fetch("/benutzer").then((res) => {
-  console.log(res.ok);
   if (!res.ok) return Promise.reject(res.status);
 
   return res.json();
@@ -71,7 +70,6 @@ const insertRow = (row) => {
   }
   statushtml += ` </select></td>`;
 
-  console.log(row.givePercentageElapsed());
   const timeremaininghtml = `<td>
                                 <div class="progress">
                                     <div class="progress-bar" role="progressbar" style="width: ${row.givePercentageElapsed()}%;" aria-valuenow="${row.givePercentageElapsed()}" aria-valuemin="0"aria-valuemax="100">${row.giveTimeRemaining()} Tage</div>
@@ -80,7 +78,6 @@ const insertRow = (row) => {
 
   let benutzerhtml = `<select class="form-control form-control-sm" name="mitarbeiter" id="MA${zeilencounter}">`;
 
-  console.log(benutzerSammlung);
   benutzerSammlung.forEach(element => {
     if (element.id === row.benutzerID) {
       benutzerhtml = benutzerhtml + `<option selected value="${element.benutzerName}">${element.benutzerName}</option>`
@@ -90,8 +87,6 @@ const insertRow = (row) => {
 
   });
   benutzerhtml = benutzerhtml + `</select>`;
-
-  console.log(benutzerhtml);
 
   const modaledit = `<td>
     <button type="button" class="btn btn-warning" data-toggle="modal"
@@ -171,7 +166,6 @@ const insertRow = (row) => {
 
 
 fetch("/aufgaben").then((res) => {
-  console.log(res.ok);
   if (!res.ok) return Promise.reject(res.status);
 
   return res.json();
