@@ -153,13 +153,7 @@ const insertRow = (row) => {
 }
 insertRow(row1);
 
-<<<<<<< HEAD:main.js
-for (let i = 0; i < 20; i++) {
-  insertRow(row1);
-}
-=======
 fetch("/aufgaben").then((res) => {
   console.log(res.ok);
 });
 
->>>>>>> 94151bc83835423b2362f28c859368cf5a19496e:public/main.js
