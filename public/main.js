@@ -1,4 +1,5 @@
-function Row(name, erstelldatum, abgabedatum, beschreibung, status, benutzerID) {
+function Row(id, name, erstelldatum, abgabedatum, beschreibung, status, benutzerID) {
+  this.id = id;
   this.name = name;
   this.erstelldatum = erstelldatum;
   this.abgabedatum = abgabedatum;
@@ -34,14 +35,13 @@ fetch("/benutzer").then((res) => {
   })
 });
 
-let zeilencounter = 0;
 let tbody = document.getElementById('hook');
 const insertRow = (row) => {
-  const titlehtml = `<tr><td>${row.name}</td>`;
+  const titlehtml = `<tr id="row${row.id}"><td>${row.name}</td>`;
   const beschreibunghtml = `<td>${row.beschreibung}</td>`;
 
   let statushtml = `<td>
-  <select class="form-control form-control-sm" name="status" id="status${zeilencounter}">`;
+  <select class="form-control form-control-sm" name="status" id="status${row.id}">`;
 
   switch (row.status) {
     case 0:
@@ -76,7 +76,7 @@ const insertRow = (row) => {
                                 </div>
                             </td>`;
 
-  let benutzerhtml = `<select class="form-control form-control-sm" name="mitarbeiter" id="MA${zeilencounter}">`;
+  let benutzerhtml = `<select class="form-control form-control-sm" name="mitarbeiter" id="MA${row.id}">`;
 
   benutzerSammlung.forEach(element => {
     if (element.id === row.benutzerID) {
@@ -90,14 +90,14 @@ const insertRow = (row) => {
 
   const modaledit = `<td>
     <button type="button" class="btn btn-warning" data-toggle="modal"
-      data-target="#ModalEditAufgabe${zeilencounter}">📝</button>
+      data-target="#ModalEditAufgabe${row.id}">📝</button>
 
-    <div class="modal fade" id="ModalEditAufgabe${zeilencounter}" tabindex="-1" role="dialog"
-      aria-labelledby="ModalEditAufgabeTitle${zeilencounter}" aria-hidden="true">
+    <div class="modal fade" id="ModalEditAufgabe${row.id}" tabindex="-1" role="dialog"
+      aria-labelledby="ModalEditAufgabeTitle${row.id}" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="form">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="ModalEditAufgabeLongTitle${zeilencounter}" style="color:black">Aufgabe bearbeiten</h5>
+            <h5 class="modal-title" id="ModalEditAufgabeLongTitle${row.id}" style="color:black">Aufgabe bearbeiten</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -105,8 +105,8 @@ const insertRow = (row) => {
 
           <div class="modal-body">
             <div class="form-group">
-              <label for="fname${zeilencounter}" style="color:black">Aufgabenname:</label>
-              <input type="text" id="fname${zeilencounter}" name="fname" value="${row.name}" class="form-control">
+              <label for="fname${row.id}" style="color:black">Aufgabenname:</label>
+              <input type="text" id="fname${row.id}" name="fname" value="${row.name}" class="form-control">
             </div>
             <div class="form-group">
               <label for="lname" style="color:black">Abgabedatum:</label>
@@ -136,14 +136,14 @@ const insertRow = (row) => {
   const modaldelete = `
     <td>
       <button type="button" class="btn btn-danger" data-toggle="modal"
-        data-target="#ModalDeleteAufgabe${zeilencounter}">🗑</button>
+        data-target="#ModalDeleteAufgabe${row.id}">🗑</button>
 
-      <div class="modal fade" id="ModalDeleteAufgabe${zeilencounter}" tabindex="-1" aria-labelledby="ModalDeleteAufgabeTitel"
+      <div class="modal fade" id="ModalDeleteAufgabe${row.id}" tabindex="-1" aria-labelledby="ModalDeleteAufgabeTitel"
         aria-hidden="true">
         <div class="modal-dialog ">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="ModalDeleteAufgabeTitel${zeilencounter}" style="color:black">Wirklich löschen?</h5>
+              <h5 class="modal-title" id="ModalDeleteAufgabeTitel${row.id}" style="color:black">Wirklich löschen?</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -159,7 +159,19 @@ const insertRow = (row) => {
     </td>`;
 
   tbody.insertAdjacentHTML('beforeend', titlehtml + beschreibunghtml + statushtml + timeremaininghtml + modaledit + modaldelete);
-  zeilencounter++;
+
+  $(`#ModalDeleteAufgabe${row.id}`).on('click', '.btn-primary', function () {
+    fetch(`/aufgaben/${row.id}`, {
+      method: "DELETE"
+    }).then((res) => {
+      if (res.ok) {
+        const rowToDelete = document.querySelector(`#row${row.id}`);
+        rowToDelete.remove();
+      } else {
+        alert("Löschen fehlgeschlagen!");
+      }
+    });
+  });
 }
 
 const ladeAufgaben = () => {
@@ -170,7 +182,7 @@ const ladeAufgaben = () => {
   }).then((aufgaben) => {
     tbody.innerHTML = ''; //tabelle wird geleert
     aufgaben.forEach((aufgabe) => {
-      let aufgabeROW = new Row(aufgabe.aufgabenName, aufgabe.erstelldatum, aufgabe.abgabedatum, aufgabe.beschreibung, aufgabe.stand, aufgabe.benutzerID);
+      let aufgabeROW = new Row(aufgabe.id, aufgabe.aufgabenName, aufgabe.erstelldatum, aufgabe.abgabedatum, aufgabe.beschreibung, aufgabe.stand, aufgabe.benutzerID);
       insertRow(aufgabeROW);
     })
   }).catch((e) => {
@@ -203,6 +215,6 @@ $('#ModalAddAufgabe').on('click', '.btn-primary', function () {
     ladeAufgaben(); //tabelle wird neu geladen um neue Aufgabe gleich anzuzeigen
   });
   $('#ModalAddAufgabe').modal('hide');
-})
+});
 
 ladeAufgaben();
