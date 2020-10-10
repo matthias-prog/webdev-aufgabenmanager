@@ -72,7 +72,7 @@ const insertRow = (row) => {
 
   const timeremaininghtml = `<td>
                                 <div class="progress">
-                                    <div class="progress-bar" role="progressbar" style="width: ${row.givePercentageElapsed()}%;" aria-valuenow="${row.givePercentageElapsed()}" aria-valuemin="0"aria-valuemax="100">${row.giveTimeRemaining()} Tage</div>
+                                    <div class="progress-bar" role="progressbar" style="min-width: 15%; width: ${row.givePercentageElapsed()}%;" aria-valuenow="${row.givePercentageElapsed()}" aria-valuemin="0"aria-valuemax="100">${row.giveTimeRemaining()} Tage</div>
                                 </div>
                             </td>`;
 
@@ -80,9 +80,9 @@ const insertRow = (row) => {
 
   benutzerSammlung.forEach(element => {
     if (element.id === row.benutzerID) {
-      benutzerhtml = benutzerhtml + `<option selected value="${element.benutzerName}">${element.benutzerName}</option>`
+      benutzerhtml = benutzerhtml + `<option selected value="${element.id}">${element.benutzerName}</option>`
     } else {
-      benutzerhtml = benutzerhtml + `<option value="${element.benutzerName}">${element.benutzerName}</option>`
+      benutzerhtml = benutzerhtml + `<option value="${element.id}">${element.benutzerName}</option>`
     }
 
   });
@@ -111,11 +111,11 @@ const insertRow = (row) => {
             <div class="form-group">
               <label for="lname" style="color:black">Abgabedatum:</label>
               <br>
-              <input type="date" id="day" name="day" value="${row.abgabedatum}" min="2017-01-01" max="2022-01-01">
+              <input type="date" id="abgabedatum${row.id}" name="day" value="${row.abgabedatum}" min="2017-01-01" max="2022-01-01">
             </div>
             <div class="form-group">
               <label for="beschr" style="color:black">Beschreibung:</label>
-              <textarea id="beschr" name="beschr" class="form-control">${row.beschreibung}</textarea>
+              <textarea id="beschr${row.id}" name="beschr" class="form-control">${row.beschreibung}</textarea>
             </div>
             <div class="form-group">
               <label for="beschr" style="color:black">Mitarbeiter:</label>
@@ -124,7 +124,7 @@ const insertRow = (row) => {
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
-            <button type="submit" class="btn btn-primary" data-dismiss="modal">Änderungen speichern</button>
+            <button type="submit" class="btn btn-primary">Änderungen speichern</button>
           </div>
           </form>
         </div>
@@ -151,7 +151,7 @@ const insertRow = (row) => {
 
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
-              <button type="button" class="btn btn-primary" data-dismiss="modal">Löschen</button>
+              <button type="button" class="btn btn-primary">Löschen</button>
             </div>
           </div>
         </div>
@@ -171,8 +171,39 @@ const insertRow = (row) => {
         alert("Löschen fehlgeschlagen!");
       }
     });
+
+    $(`#ModalDeleteAufgabe${row.id}`).modal('hide');
   });
-}
+
+  $(`#ModalEditAufgabe${row.id}`).on('click', '.btn-primary', function () {
+    const aufgabenname = $(`#fname${row.id}`).val();
+    const abgabedatum = $(`#abgabedatum${row.id}`).val();
+    const beschreibung = $(`#beschr${row.id}`).val();
+    const mitarbeiter = $(`#MA${row.id} :selected`).val();
+
+    const values = {
+      id: row.id,
+      aufgabenName: aufgabenname,
+      abgabedatum: abgabedatum,
+      beschreibung: beschreibung,
+      benutzerID: mitarbeiter
+    };
+
+    fetch("/aufgaben", {
+      method: "PUT",
+      body: JSON.stringify(values),
+      headers: {
+        "content-type": "application/json",
+      },
+    }).then((res) => {
+      console.log(res.ok);
+      ladeAufgaben(); //tabelle wird neu geladen um aktualisierte Aufgabe gleich anzuzeigen
+    }).catch((e) => { alert(e) });
+
+    $(`#ModalEditAufgabe${row.id}`).modal('hide');
+  });
+
+}//ende von insertRow()
 
 const ladeAufgaben = () => {
   fetch("/aufgaben").then((res) => {
@@ -213,7 +244,8 @@ $('#ModalAddAufgabe').on('click', '.btn-primary', function () {
   }).then((res) => {
     console.log(res.ok);
     ladeAufgaben(); //tabelle wird neu geladen um neue Aufgabe gleich anzuzeigen
-  });
+  }).catch((e) => { alert(e) });;
+
   $('#ModalAddAufgabe').modal('hide');
 });
 
