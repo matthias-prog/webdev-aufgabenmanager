@@ -162,16 +162,47 @@ const insertRow = (row) => {
   zeilencounter++;
 }
 
+const ladeAufgaben = () => {
+  fetch("/aufgaben").then((res) => {
+    if (!res.ok) return Promise.reject(res.status);
 
+    return res.json();
+  }).then((aufgaben) => {
+    tbody.innerHTML = ''; //tabelle wird geleert
+    aufgaben.forEach((aufgabe) => {
+      let aufgabeROW = new Row(aufgabe.aufgabenName, aufgabe.erstelldatum, aufgabe.abgabedatum, aufgabe.beschreibung, aufgabe.stand, aufgabe.benutzerID);
+      insertRow(aufgabeROW);
+    })
+  }).catch((e) => {
+    alert(`Fehler ${e}`);
+  });
+}
 
+$('#ModalAddAufgabe').on('click', '.btn-primary', function () {
+  const aufgabenname = $('#fnameAdd').val();
+  const abgabedatum = $('#dayAdd').val();
+  const beschreibung = $('#beschrAdd').val();
 
-fetch("/aufgaben").then((res) => {
-  if (!res.ok) return Promise.reject(res.status);
+  const values = {
+    aufgabenName: aufgabenname,
+    erstelldatum: new Date().toISOString().slice(0, 10),
+    abgabedatum: abgabedatum,
+    beschreibung: beschreibung,
+    stand: 0,
+    benutzerID: 1
+  };
 
-  return res.json();
-}).then((aufgaben) => {
-  aufgaben.forEach((aufgabe) => {
-    let aufgabeROW = new Row(aufgabe.aufgabenName, aufgabe.erstelldatum, aufgabe.abgabedatum, aufgabe.beschreibung, aufgabe.stand, aufgabe.benutzerID);
-    insertRow(aufgabeROW);
-  })
-});
+  fetch("/aufgaben", {
+    method: "POST",
+    body: JSON.stringify(values),
+    headers: {
+      "content-type": "application/json",
+    },
+  }).then((res) => {
+    console.log(res.ok);
+    ladeAufgaben(); //tabelle wird neu geladen um neue Aufgabe gleich anzuzeigen
+  });
+  $('#ModalAddAufgabe').modal('hide');
+})
+
+ladeAufgaben();
