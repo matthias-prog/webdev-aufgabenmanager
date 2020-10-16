@@ -111,4 +111,15 @@ app.delete("/benutzer/:id", async (req, res) => {
   }
 });
 
+app.patch("/aufgaben/:id/:status", async (req, res) => {
+  try {
+    const [rows] = await connection.execute("UPDATE aufgaben SET stand=? WHERE id=?", [req.params.status, req.params.id]);
+  } catch (err) {
+    console.log(err);
+    return res.status(500).send();
+  }
+  res.status(200).send();
+
+});
+
 app.listen(55);
