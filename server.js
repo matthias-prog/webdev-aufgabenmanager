@@ -73,7 +73,7 @@ app.post("/benutzer", async (req, res) => {
   ] = await connection.execute(
     "INSERT INTO benutzer (benutzerName, email, passwort) VALUES (?, ?, ?)",
     [req.body.benutzerName, req.body.email, req.body.passwort]
-  );
+  ).catch((err) => { res.status(500).send('Hinzufügen fehlgeschlagen'); });
 
   res.json({
     id: rows.insertId,
