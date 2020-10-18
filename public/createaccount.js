@@ -14,7 +14,7 @@ form.addEventListener("submit", (evt) => {
         passwort: password
    };
    if(password === verifypassword){
-    fetch("/benutzer", {
+    fetch("/register", {
         method: "POST",
         body: JSON.stringify(values),
         headers: {
