@@ -155,7 +155,7 @@ const insertRow = (row) => {
 
       <div class="modal fade" id="ModalDeleteAufgabe${row.id}" tabindex="-1" aria-labelledby="ModalDeleteAufgabeTitel"
         aria-hidden="true">
-        <div class="modal-dialog ">
+        <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="ModalDeleteAufgabeTitel${row.id}" style="color:black">Wirklich löschen?</h5>

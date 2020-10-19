@@ -1,8 +1,8 @@
 function RowUser(id, name, email, passwort) {
-    this.id = id;
-    this.name = name;
-    this.email = email;
-    this.passwort = passwort;
+  this.id = id;
+  this.name = name;
+  this.email = email;
+  this.passwort = passwort;
 }
 
 let tbody = document.getElementById('hook');
@@ -27,7 +27,6 @@ const insertRow = (rowuser) => {
         </div>
         <!-- Body Modal "Bearbeiten" -->
         <div class="modal-body">
-          <form action="benutzer.html">
             <div class="form-group">
               <label for="fname${rowuser.id}" style="color:black">Benutzername:</label>
               <input type="text" id="fname${rowuser.id}" name="fname" value="${rowuser.name}" class="form-control">
@@ -44,7 +43,6 @@ const insertRow = (rowuser) => {
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
               <button type="button" class="btn btn-warning">Änderungen speichern</button>
             </div>
-          </form>
         </div>
       </div>
     </div>
@@ -55,7 +53,7 @@ const insertRow = (rowuser) => {
     <td>
     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalDeleteBenutzer${rowuser.id}">🗑</button>
 
-        <div class="modal fade" id="ModalDeleteBenutzer${rowuser.id}" tabindex="-1" aria-labelledby="ModalDeleteBenutzerTitel"
+      <div class="modal fade" id="ModalDeleteBenutzer${rowuser.id}" tabindex="-1" aria-labelledby="ModalDeleteBenutzerTitel"
         aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -65,11 +63,9 @@ const insertRow = (rowuser) => {
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body">
-            </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
-              <button type="button" class="btn btn-primary" >Löschen</button>
+              <button type="button" class="btn btn-primary">Löschen</button>
             </div>
           </div>
         </div>
@@ -88,9 +84,11 @@ const insertRow = (rowuser) => {
       } else {
         alert("Löschen fehlgeschlagen!");
       }
-    });
+    }).catch((e) => { alert(e) });
 
     $(`#ModalDeleteBenuzter${rowuser.id}`).modal('hide');
+    $('body').removeClass('modal-open');
+    $('.modal-backdrop').remove();
   });
 
   $(`#modalEditUser${rowuser.id}`).on('click', '.btn-warning', function () {
@@ -129,7 +127,7 @@ const ladeBenutzer = () => {
   }).then((benutzer) => {
     tbody.innerHTML = ''; //tabelle wird geleert
     benutzer.forEach((user) => {
-      let userROW = new RowUser(user.id, user.benutzerName ,user.email, user.passwort);
+      let userROW = new RowUser(user.id, user.benutzerName, user.email, user.passwort);
       insertRow(userROW);
     })
   }).catch((e) => {

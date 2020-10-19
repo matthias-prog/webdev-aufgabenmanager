@@ -4,8 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link href="https://unpkg.com/tabulator-tables@4.8.1/dist/css/tabulator.min.css" rel="stylesheet">
+  <title>Benutzerverwaltung</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
@@ -29,57 +28,57 @@
     </nav>
   </header>
 
-    <table class="table mt-5" id="wrapper">
-      <thead>
-        <tr>
-          <th>🧑 Benutzername</th>
-          <th>📧 E-Mail</th>
-          <th>🔑 Passwort</th>
-          <!-- Bootstrap Modal "Add" -->
-          <!-- Quelle: https://getbootstrap.com/docs/4.0/components/modal/ -->
-          <th>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAddUser">
-              📌 Add
-            </button>
-            <!-- Modal -->
-            <div class="modal fade" id="modalAddUser" tabindex="-1" role="dialog" aria-labelledby="modalAddUserTitle"
-              aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered" role="form">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="modalAddUserLongTitle" style="color:black">Benutzer hinzufügen</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
+  <table class="table mt-5" id="wrapper">
+    <thead>
+      <tr>
+        <th>🧑 Benutzername</th>
+        <th>📧 E-Mail</th>
+        <th>🔑 Passwort</th>
+        <!-- Bootstrap Modal "Add" -->
+        <!-- Quelle: https://getbootstrap.com/docs/4.0/components/modal/ -->
+        <th>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAddUser">
+            📌 Add
+          </button>
+          <!-- Modal -->
+          <div class="modal fade" id="modalAddUser" tabindex="-1" role="dialog" aria-labelledby="modalAddUserTitle"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="form">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modalAddUserLongTitle" style="color:black">Benutzer hinzufügen</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <!-- Body Modal "Add" -->
+                <div class="modal-body">
+                  <div class="form-group">
+                    <label for="fname" style="color:black">Benutzername:</label>
+                    <input type="text" id="fname" name="fname" class="form-control">
                   </div>
-                  <!-- Body Modal "Add" -->
-                  <div class="modal-body">
-                      <div class="form-group">
-                        <label for="fname" style="color:black">Benutzername:</label>
-                        <input type="text" id="fname" name="fname" class="form-control">
-                      </div>
-                      <div class="form-group">
-                        <label for="lname" style="color:black">E-Mail:</label>
-                        <input type="text" id="lname" name="lname" class="form-control">
-                      </div>
-                      <div class="form-group">
-                        <label for="pname" style="color:black">Passwort:</label>
-                        <input type="text" id="pname" name="pname" class="form-control">
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
-                        <button type="button" class="btn btn-warning">Hinzufügen</button>
-                      </div>
+                  <div class="form-group">
+                    <label for="lname" style="color:black">E-Mail:</label>
+                    <input type="text" id="lname" name="lname" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="pname" style="color:black">Passwort:</label>
+                    <input type="text" id="pname" name="pname" class="form-control">
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
+                    <button type="button" class="btn btn-warning">Hinzufügen</button>
                   </div>
                 </div>
               </div>
-          </th>
-          <!-- Ende Modal "Add" -->
-        </tr>
-      </thead>
-      <tbody id="hook">
-      </tbody>
-    </table>
+            </div>
+        </th>
+        <!-- Ende Modal "Add" -->
+      </tr>
+    </thead>
+    <tbody id="hook">
+    </tbody>
+  </table>
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -90,8 +89,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
-  <script src="benutzer.js"
-   ></script>  
+  <script src="benutzer.js"></script>
 </body>
 
 </html>
