@@ -42,7 +42,7 @@ const insertRow = (rowuser) => {
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
-              <button type="submit" class="btn btn-warning">Änderungen speichern</button>
+              <button type="button" class="btn btn-warning">Änderungen speichern</button>
             </div>
           </form>
         </div>
@@ -93,14 +93,14 @@ const insertRow = (rowuser) => {
     $(`#ModalDeleteBenuzter${rowuser.id}`).modal('hide');
   });
 
-  $(`#modalEditBenutzer${rowuser.id}`).on('click', '.btn-primary', function () {
+  $(`#modalEditUser${rowuser.id}`).on('click', '.btn-warning', function () {
     const benutzername = $(`#fname${rowuser.id}`).val();
     const email = $(`#lname${rowuser.id}`).val();
     const passwort = $(`#pname${rowuser.id}`).val();
 
     const values = {
       id: rowuser.id,
-      benutzername: benutzername,
+      benutzerName: benutzername,
       email: email,
       passwort: passwort,
     };
@@ -116,7 +116,7 @@ const insertRow = (rowuser) => {
       ladeBenutzer(); //tabelle wird neu geladen um aktualisierte Benutzer gleich anzuzeigen
     }).catch((e) => { alert(e) });
 
-    $(`#modalEditBenutzer${rowuser.id}`).modal('hide');
+    $(`#modalEditUser${rowuser.id}`).modal('hide');
   });
 
 }//ende von insertRow()
@@ -137,13 +137,13 @@ const ladeBenutzer = () => {
   });
 }
 
-$('#modalAddUser').on('click', '.btn-primary', function () {
+$('#modalAddUser').on('click', '.btn-warning', function () {
   const benutzername = $('#fname').val();
   const email = $('#lname').val();
   const passwort = $('#pname').val();
 
   const values = {
-    benutzername: benutzername,
+    benutzerName: benutzername,
     email: email,
     passwort: passwort,
 
@@ -157,7 +157,7 @@ $('#modalAddUser').on('click', '.btn-primary', function () {
     },
   }).then((res) => {
     console.log(res.ok);
-    ladeBenuzer(); //tabelle wird neu geladen um neue Benutzer gleich anzuzeigen
+    ladeBenutzer(); //tabelle wird neu geladen um neue Benutzer gleich anzuzeigen
   }).catch((e) => { alert(e) });
 
   $('#modalAddUser').modal('hide');

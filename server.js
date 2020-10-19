@@ -111,4 +111,24 @@ app.delete("/benutzer/:id", async (req, res) => {
   }
 });
 
+app.put("/benutzer", async (req, res) => {
+  const [rows] = await connection.execute("SELECT * FROM benutzer WHERE id=?", [req.body.id]);
+  try {
+    if (req.body.benutzerName != rows.benutzerName) {
+      const [rows] = await connection.execute("UPDATE benutzer SET benutzerName=? WHERE id=?", [req.body.benutzerName, req.body.id]);
+    }
+    if (req.body.email != rows.email) {
+      const [rows] = await connection.execute("UPDATE benutzer SET email=? WHERE id=?", [req.body.email, req.body.id])
+    }
+    if (req.body.passwort != rows.passwort) {
+      const [rows] = await connection.execute("UPDATE benutzer SET passwort=? WHERE id=?", [req.body.passwort, req.body.id])
+    }
+
+  } catch (err) {
+    return res.status(500).send('Update fehlgeschlagen');
+  }
+
+  res.status(200).send();
+});
+
 app.listen(55);
