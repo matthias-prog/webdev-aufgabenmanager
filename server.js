@@ -26,6 +26,23 @@ app.get("/benutzer", async (req, res) => {
   res.json(rows);
 });
 
+
+app.post("/register", async (req, res) => {
+  const [
+    rows,
+  ] = await connection.execute(
+    "INSERT INTO benutzer (benutzerName, email, passwort) VALUES (?, ?, ?)",
+    [req.body.benutzerName, req.body.email, req.body.passwort]
+  );
+
+  res.json({
+    id: rows.insertId,
+    benutzerName: req.body.benutzerName,
+    email: req.body.email,
+    passwort: req.body.passwort,
+  });
+});
+
 app.post("/aufgaben", async (req, res) => {
   const [
     rows,
@@ -129,6 +146,17 @@ app.put("/benutzer", async (req, res) => {
   }
 
   res.status(200).send();
+});
+
+app.patch("/aufgaben/:id/:status", async (req, res) => {
+  try {
+    const [rows] = await connection.execute("UPDATE aufgaben SET stand=? WHERE id=?", [req.params.status, req.params.id]);
+  } catch (err) {
+    console.log(err);
+    return res.status(500).send();
+  }
+  res.status(200).send();
+
 });
 
 app.listen(55);
