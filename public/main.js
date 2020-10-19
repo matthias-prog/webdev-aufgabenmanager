@@ -286,3 +286,13 @@ $('#ModalAddAufgabe').on('click', '.btn-primary', function () {
 });
 
 ladeAufgaben();
+
+//Quelle: https://www.w3schools.com/bootstrap4/tryit.asp?filename=trybs_filters_table&stacked=h
+$(document).ready(function () {
+  $("#myInput").on("keyup", function () {
+    var value = $(this).val().toLowerCase();
+    $("#hook tr").filter(function () {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
