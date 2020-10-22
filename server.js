@@ -43,6 +43,19 @@ app.post("/register", async (req, res) => {
   });
 });
 
+
+app.post('/login', async (req, res) => {
+
+  await connection.execute('SELECT * FROM benutzer WHERE email = ? AND passwort = ?', [req.body.email, req.body.passwort], function (error, results, fields) {
+      if (results.length != 0) {
+        res.status(200).send()
+      } else {
+        res.status(401).send()
+      }
+  }).catch((err) => { res.status(500).send('Login fehlgeschlagen');
+});
+});
+
 app.post("/aufgaben", async (req, res) => {
   const [
     rows,
