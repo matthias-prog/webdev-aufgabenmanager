@@ -16,6 +16,10 @@ Neben den Aufgabe gibt es auch eine Benutzerverwaltung. Dort werden alle Nutzer 
 ## Architektur
 *Beschreibung der eingesetzten Technologien und Architektur. Ggf. Schaubild. Zusammenspiel Frontend <-> Backend*
 
+Den Anforderungen gemäß teilt sich die Anwendung in Frontend, Backend und Datenbank auf. Das Frontend fragt Daten über die Fetch-API beim Backend an und das Backend liefert entsprechend die Daten aus der MySQL-Datenbank. Die Leiferung erfolgt über JSON-Datensätze.
+
+Erwähnenswerte Technologien sind das Bootstrap-Framework in der Version 4.5.3 für das CSS-Styling der Website. Auch wurde JQuery zum Abfragen von Werten aus Formularfeldern im Frontend verwendet. JQuery wurde ausgewählt, da Bootstrap dies zur Installation empfiehlt, um wirklich alle Features von Bootstrap verwenden zu können.
+
 ### Datenmodell
 *Beispiel JSON für alle verwendetetn Datenmodelle*
 
@@ -28,6 +32,8 @@ Neben den Aufgabe gibt es auch eine Benutzerverwaltung. Dort werden alle Nutzer 
 
 ### REST Services (Backend)
 *Beschreibung aller REST Services*
+
+In der Anwendung gibt es eine grobe Einteilung in REST-Routen, die etwas mit Aufgaben oder mit Benutzern zu tun haben. Alle Routen für Aufgaben fangen mit `/aufgaben` und alle für Benutzer mit `/benutzer` an.
 
 ### Frontend
 *Beschreibung aller UI Masken, Events, fetch Requests...*
