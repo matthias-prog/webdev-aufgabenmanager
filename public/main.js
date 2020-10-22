@@ -187,7 +187,7 @@ const insertRow = (row) => {
       } else {
         alert("Löschen fehlgeschlagen!");
       }
-    });
+    }).catch((e) => { alert(e) });
 
     $(`#ModalDeleteAufgabe${row.id}`).modal('hide');
   });
