@@ -1,9 +1,30 @@
 # Aufgabenmanager
 *Fachliche Beschreibung der Web-Anwendung...*
 
-Im Aufgabemanager können Aufgaben mit Titel, Beschreibung und Abgabedatum angelegt werden. Danach kann der Status der Aufgabe verändert werden, entweder auf "vorgeschlagen", "abgebrochen", "in Bearbeitung" oder "erledigt". Auch kann ein Nutzer über seinen Nutzernamen einer Aufgabe zugeteilt werden. Weiter können auch alle Eigenschaften der Aufgabe wieder verändert werden (bis auf das Erstelldatum). Diese erstellten Aufgabe werden in der Datenbank gespeichert und werden auf einer Übersichtsseite angezeigt. Dort befindet sich auch für jede Aufgabe ein Ladebalken, der die noch zur Verfügung stehende Zeit bis zur Abgabe visualisiert. Natürlich können die Aufgaben auch gelöscht werden.
+Die Funktion der Webanwendung "Aufgabenmanager" ist, Aufgaben einer Arbeitsgemeinschaft zu organisieren.
+Bei der einmaligen Registrierung wird ein Benutzer angelegt, mit Welchem man sich nun zukünftig anmelden kann.
+War das Registrieren und die anschließende Anmeldung eines Benutzers erfolgreich ist nun der eigentliche Aufgabenmanager zu sehen.
+In einer Tabelle werden in der Datenbank bereits bestehende Aufgaben angezeigt. Diese haben folgende Eigenschaften:
 
-Neben den Aufgabe gibt es auch eine Benutzerverwaltung. Dort werden alle Nutzer in einer Übersicht angezeigt, wo sie verändert, gelöscht oder auch neu erstellt werden können. Diese Nutzer können dann einer Aufgabe über ihren Benutzernamen zugeteilt werden. Auch können die Benutzer benutzt werden, um sich auf der Seite anzumelden. Auf der entsprechenden Login-Seite gibt es auch die Möglichkeit sich zu registrieren, also einen neuen Nutzer zu erstellen.
+- Titel
+- Beschreibung
+- Status
+- Bearbeitungszeit
+- zuständiger Mitarbeiter
+
+Neue Aufgaben können über den Button "ADD" hinzugefügt werden. Hierbei hat der Erschaffer nun die Möglichkeit den TItel, das Abgabedatum und die Aufgabenbeschreibung verändern. Bei anschließendem Klick auf "Hinzufügen" wird die Aufgabe in der Datenbank gespeichert und der Tabelle auf der Hauptseite hinzugefügt. Bei der Ansicht aller Aufgaben kann mit einem Drop-Down-Menü in der entsprechenden Tabellenspalte und -zeile der Status der Aufgabe ausgewählt werden. Dieser zeigt an, ob die Aufgabe "vorgeschlagen", "abgebrochen", "in Bearbeitung" oder "erledigt" ist. Diese Information wird bei Veränderung ebenfalls in die Datenbank übernommen. Neben dem Statusfeld ist zu jeder Aufgabe ein Balken vorhanden, der visuell die verbleibende Zeit, bis zur Abgabe der Aufgabe zeigt. Diese wird aus der Differenz des Abgabedatums und des aktuellen Datums errechnet.
+In jeder Zeile sind außerdem zwei Buttons vorhanden. Mit dem Einen ist möglich, die ausgewählte Aufgabe zu löschen, mit dem Anderen, sie zu editieren. Beim Bearbeiten einer Aufgabe kann auch der zuständige Mitarbeiter ausgewählt werden.
+Ein besonderes Feature ist die Suchleiste, mithilfe dieser kann nach bestimmten Aufgaben gesucht werden. Kriterien für die Suche sind Der Aufgabentitel und die Beschreibung.
+
+Neben der Auflistung und Verwaltung der Aufgaben gibt es auch eine Benutzerverwaltung. Diese kann über den Punkt "Benutzer" in der Navigationsleiste erreicht werden. Hier werden alle Benutzer der Anwendung in einer Übersicht angezeigt. Benutzer haben folgende Eigenschaften:
+
+- Benutzername
+- E-Mail 
+- Passwort
+
+Ähnlich wie bei der Aufgabenübersicht können neue Benutzer angelegt, bearbeitet, oder gelöscht werden. Sämtliche Änderungen werden in der Datenbank verzeichnet.
+
+Über den Button "Abmelden", in der rechten oberen Ecke, kann die aktuelle Session beendet werden und der Anwender gelangt zurück zur Login-Seite.
 
 ## QuickStart
 1. `git clone https://github.com/matthias-prog/webdev-aufgabenmanager.git`
@@ -31,3 +52,13 @@ Neben den Aufgabe gibt es auch eine Benutzerverwaltung. Dort werden alle Nutzer 
 
 ### Frontend
 *Beschreibung aller UI Masken, Events, fetch Requests...*
+
+Die grafische Gestaltung des Frontends basiert ausschließlich aus Anpassungen mit Bootstrap.
+Folgende Bootstrap Komponenten wurden für die Entwicklung der grafischen Oberfläche verwendet:
+
+- Bootstrap Forms
+- Bootstrap Floating Lables 
+- Bootstrap Modals
+- Bootstrap Buttons
+
+
