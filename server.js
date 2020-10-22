@@ -1,5 +1,6 @@
 const express = require("express");
 const mysql = require("mysql2/promise");
+const session = require("express-session");
 
 const app = express();
 
@@ -16,7 +17,18 @@ mysql
 app.use(express.static("public"));
 app.use(express.json());
 
+app.use(
+  session({
+    secret: "super secret",
+    resave: false,
+    saveUninitialized: true,
+  })
+);
+
 app.get("/aufgaben", async (req, res) => {
+  if (!req.session.id) {
+    return res.json();
+  }
   const [rows] = await connection.execute("SELECT * from aufgaben");
   res.json(rows);
 });
@@ -49,6 +61,8 @@ app.post("/login", async (req, res) => {
   try {
     const [rows] = await connection.execute("SELECT * FROM benutzer WHERE email = ? AND passwort = ?", [req.body.email, req.body.passwort]);
     if (rows[0].email == req.body.email && rows[0].passwort == req.body.passwort) {
+      console.log(rows);
+      req.session.id = rows[0].id;
       res.status(200).send();
     } else {
       res.status(401).send();
