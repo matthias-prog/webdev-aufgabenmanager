@@ -37,12 +37,16 @@ Neben der Auflistung und Verwaltung der Aufgaben gibt es auch eine Benutzerverwa
 ## Architektur
 *Beschreibung der eingesetzten Technologien und Architektur. Ggf. Schaubild. Zusammenspiel Frontend <-> Backend*
 
-Den Anforderungen gemäß teilt sich die Anwendung in Frontend, Backend und Datenbank auf. Das Frontend fragt Daten über die Fetch-API beim Backend an und das Backend liefert entsprechend die Daten aus der MySQL-Datenbank. Die Leiferung erfolgt über JSON-Datensätze.
+Den Anforderungen gemäß teilt sich die Anwendung in Frontend, Backend und Datenbank auf. 
 
-Erwähnenswerte Technologien sind das Bootstrap-Framework in der Version 4.5.3 für das CSS-Styling der Website. Auch wurde JQuery zum Abfragen von Werten aus Formularfeldern im Frontend verwendet. JQuery wurde ausgewählt, da Bootstrap dies zur Installation empfiehlt, um wirklich alle Features von Bootstrap verwenden zu können.
+Das Frontend beinhaltet die grafische Oberfläche und die Verknüpfung zum Backend. Für das CSS-Styling des Frontends wurde das Bootstrap-Framework in der Version 4.5.3 verwendet. Mithilfe von JQuery werden Werte aus Formularfeldern abgefragt. Diese Technologie wurde ausgewählt, da mit ihr alle Features von Bootstrap optimal genutzt werden können. Im Frontend angeforderte Daten werden über die Fetch-API beim Backend angefragt.
+
+Das Backend beinhaltet die Logik der Anwendung und ist Bindeglied zwischen Frontend und Datenbank. Anfragen oder Eingaben aus dem Frontend werden im Backend verarbeitet. Anschließend werden die Daten aus der Datenbank abgefragt oder aktualisiert. Der Transport von Daten zu und von der Datenbank erfolgt mithilfe von JSON-Datensätze.
+
+Die Datenbank verwendet die MySQL-Technologie. In ihr sind die Datensätze für die Anwendung gespeichert. Aufgebaut ist die Datenbank aus zwei Tabellen. Je eine Tabelle pro Anwendungsfunktion (Aufgabenmanager & Benutzerverwaltung).
 
 ### Datenmodell
-*Beispiel JSON für alle verwendetetn Datenmodelle*
+*Beispiel JSON für alle verwendeten Datenmodelle*
 
 ``
 [
@@ -59,12 +63,16 @@ In der Anwendung gibt es eine grobe Einteilung in REST-Routen, die etwas mit Auf
 ### Frontend
 *Beschreibung aller UI Masken, Events, fetch Requests...*
 
-Die grafische Gestaltung des Frontends basiert ausschließlich aus Anpassungen mit Bootstrap.
+Die grafische Gestaltung (das CSS-Styling) des Frontends basiert ausschließlich aus Anpassungen mit dem Bootstrap-Framework. Grund hierfür ist die hohe Benutzerfreundlichkeit und intuitive Bedienbarkeit. Des Weiteren erleichtert die Verwendung dieses Frameworks die Anwendungsentwicklung, da dank bereits bestehenden  Außerdem wird so ein einheitliches Layout und Design ermöglicht und unterstützt. Das Layout der Web-Anwendung ist sehr schlicht gehalten, sodass die Auferksamkeit der Nutzer auf den Inhalt gerichtet wird.
+
 Folgende Bootstrap Komponenten wurden für die Entwicklung der grafischen Oberfläche verwendet:
 
-- Bootstrap Forms
-- Bootstrap Floating Lables 
-- Bootstrap Modals
 - Bootstrap Buttons
+- Bootstrap Container
+- Bootstrap Floating Lables 
+- Bootstrap Forms
+- Bootstrap Modals
+- Bootstrap Navbar
+- ...
 
-
+Werte aus den Bootstrap-Forms werden mithilfe von JQuery abgefragt. Dabei werden...
