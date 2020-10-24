@@ -31,4 +31,5 @@ form.addEventListener("submit", (evt) => {
     alert("Passwörter stimmen nicht überein!");
 }
 
-});
+}).catch((e) => {
+    alert(`Fehler ${e}`)});
