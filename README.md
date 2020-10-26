@@ -12,9 +12,9 @@ In einer Tabelle werden in der Datenbank bereits bestehende Aufgaben angezeigt. 
 - Bearbeitungszeit
 - zuständiger Mitarbeiter
 
-Neue Aufgaben können über den Button "ADD" hinzugefügt werden. Hierbei hat der Erschaffer nun die Möglichkeit den TItel, das Abgabedatum und die Aufgabenbeschreibung verändern. Bei anschließendem Klick auf "Hinzufügen" wird die Aufgabe in der Datenbank gespeichert und der Tabelle auf der Hauptseite hinzugefügt. Bei der Ansicht aller Aufgaben kann mit einem Drop-Down-Menü in der entsprechenden Tabellenspalte und -zeile der Status der Aufgabe ausgewählt werden. Dieser zeigt an, ob die Aufgabe "vorgeschlagen", "abgebrochen", "in Bearbeitung" oder "erledigt" ist. Diese Information wird bei Veränderung ebenfalls in die Datenbank übernommen. Neben dem Statusfeld ist zu jeder Aufgabe ein Balken vorhanden, der visuell die verbleibende Zeit, bis zur Abgabe der Aufgabe zeigt. Diese wird aus der Differenz des Abgabedatums und des aktuellen Datums errechnet.
+Neue Aufgaben können über den Button "ADD" hinzugefügt werden. Hierbei hat der Erschaffer die Möglichkeit den Titel, das Abgabedatum und die Aufgabenbeschreibung verändern. Bei anschließendem Klick auf "Hinzufügen" wird die Aufgabe in der Datenbank gespeichert und der Tabelle auf der Hauptseite hinzugefügt. Bei der Ansicht aller Aufgaben kann mit einem Drop-Down-Menü in der entsprechenden Tabellenspalte und -zeile der Status der Aufgabe ausgewählt werden. Dieser zeigt an, ob die Aufgabe "vorgeschlagen", "abgebrochen", "in Bearbeitung" oder "erledigt" ist. Diese Information wird bei Veränderung ebenfalls in die Datenbank übernommen. Neben dem Statusfeld ist zu jeder Aufgabe ein Balken vorhanden, der visuell die verbleibende Zeit bis zur Abgabe der Aufgabe zeigt. Diese wird aus der Differenz des Abgabedatums und des aktuellen Datums errechnet.
 In jeder Zeile sind außerdem zwei Buttons vorhanden. Mit dem Einen ist möglich, die ausgewählte Aufgabe zu löschen, mit dem Anderen, sie zu editieren. Beim Bearbeiten einer Aufgabe kann auch der zuständige Mitarbeiter ausgewählt werden.
-Ein besonderes Feature ist die Suchleiste, mithilfe dieser kann nach bestimmten Aufgaben gesucht werden. Kriterien für die Suche sind Der Aufgabentitel und die Beschreibung.
+Ein besonderes Feature ist die Suchleiste, mithilfe dieser kann nach bestimmten Aufgaben gesucht werden. Kriterien für die Suche sind der Aufgabentitel und die Beschreibung.
 
 Neben der Auflistung und Verwaltung der Aufgaben gibt es auch eine Benutzerverwaltung. Diese kann über den Punkt "Benutzer" in der Navigationsleiste erreicht werden. Hier werden alle Benutzer der Anwendung in einer Übersicht angezeigt. Benutzer haben folgende Eigenschaften:
 
@@ -39,7 +39,7 @@ Neben der Auflistung und Verwaltung der Aufgaben gibt es auch eine Benutzerverwa
 
 Den Anforderungen gemäß teilt sich die Anwendung in Frontend, Backend und Datenbank auf. 
 
-Das Frontend beinhaltet die grafische Oberfläche und die Verknüpfung zum Backend. Für das CSS-Styling des Frontends wurde das Bootstrap-Framework in der Version 4.5.3 verwendet. Mithilfe von JQuery werden Werte aus Formularfeldern abgefragt. Diese Technologie wurde ausgewählt, da mit ihr alle Features von Bootstrap optimal genutzt werden können. Im Frontend angeforderte Daten werden über die Fetch-API beim Backend angefragt.
+Das Frontend beinhaltet die grafische Oberfläche und die Verknüpfung zum Backend. Programmiersprachen des Frontends sind HTML und CSS. Nativer CSS-Code ist aber nicht vorhanden. Für das CSS-Styling des Frontends wurde das Bootstrap-Framework in der Version 4.5.3 verwendet. Mithilfe von JQuery werden Werte aus Formularfeldern abgefragt. Diese Technologie wurde ausgewählt, da mit ihr alle Features von Bootstrap optimal genutzt werden können. Im Frontend angeforderte Daten werden über die Fetch-API beim Backend angefragt.
 
 Das Backend beinhaltet die Logik der Anwendung und ist Bindeglied zwischen Frontend und Datenbank. Anfragen oder Eingaben aus dem Frontend werden im Backend verarbeitet. Anschließend werden die Daten aus der Datenbank abgefragt oder aktualisiert. Der Transport von Daten zu und von der Datenbank erfolgt mithilfe von JSON-Datensätze.
 
@@ -108,10 +108,45 @@ Wenn der Client eine Anfrage an die Route /aufgaben in Form einer POST-Methode s
 
 In der Anwendung gibt es eine grobe Einteilung in REST-Routen, die etwas mit Aufgaben oder mit Benutzern zu tun haben. Alle Routen für Aufgaben fangen mit `/aufgaben` und alle für Benutzer mit `/benutzer` an.
 
+REST Routen Aufgaben:
+
+- GET Route auf "/aufgaben" =>
+Führt ein SELECT SQL-Statement aus, um die Datensätze der Tabelle „Aufgaben“ zu holen.
+
+- POST Route auf "/aufgaben" =>
+Führt ein INSERT INTO SQL-Statement zum Einfügen neuer Aufgaben in die Tabelle „Aufgaben“ aus.
+
+- PUT Route auf "/aufgaben" =>
+Führt ein SELECT SQL-Statement aus, um den gewünschten Datensatz der Tabelle „Aufgaben“ zu laden. Anschließend werden je nach Anzahl der Änderungen bis zu vier UPDATE Statements ausgeführt, um die Datensätze gemäß den Änderungen anzupassen.
+
+- DELETE Route auf "/aufgaben/:id" =>
+Führt ein DELETE SQL-Statement aus, um einen gewünschten Datensatz der Tabelle „Aufgaben“ zu entfernen.
+
+- PATCH Route auf "/aufgaben/:id/:status" =>
+Führt ein UPDATE SQL-Statement aus, um den Stand (vorgeschlagen, abgebrochen, in Arbeit oder erledigt) einer Aufgabe zu aktualisieren.
+
+REST Routen Benutzer:
+
+- GET Route auf "/benutzer" =>
+Führt ein SELECT SQL-Statement aus, um die Datensätze der Tabelle „Benutzer“ zu holen.
+
+- POST Route auf "/benutzer/login" =>
+Führt ein SELECT SQL-Statement aus, um zu überprüfen ob eine eingegebene E-Mail-Adresse und ein eigegebenes Passwort mit einem Eintrag in der Tabelle „Benutzer“ übereinstimmt.
+
+- POST Route auf "/benutzer" =>
+Führt ein INSERT INTO SQL-Statement zum Einfügen neuer Benutzer in die Tabelle „Benutzer“ aus.
+
+- DELETE Route auf "/benutzer/:id" =>
+Führt ein DELETE SQL-Statement aus, um einen gewünschten Datensatz der Tabelle „Benutzer“ zu entfernen.
+
+- PUT Route auf "/benutzer" =>
+Führt ein SELECT SQL-Statement aus, um den gewünschten Datensatz der Tabelle „Benutzer“ zu laden. Anschließend werden je nach Anzahl der Änderungen bis zu drei UPDATE Statements ausgeführt, um die Datensätze gemäß den Änderungen anzupassen.
+
+
 ### Frontend
 *Beschreibung aller UI Masken, Events, fetch Requests...*
 
-Die grafische Gestaltung (das CSS-Styling) des Frontends basiert ausschließlich aus Anpassungen mit dem Bootstrap-Framework. Grund hierfür ist die hohe Benutzerfreundlichkeit und intuitive Bedienbarkeit. Des Weiteren erleichtert die Verwendung dieses Frameworks die Anwendungsentwicklung, da dank bereits bestehenden  Außerdem wird so ein einheitliches Layout und Design ermöglicht und unterstützt. Das Layout der Web-Anwendung ist sehr schlicht gehalten, sodass die Auferksamkeit der Nutzer auf den Inhalt gerichtet wird.
+Die grafische Gestaltung (das CSS-Styling) des Frontends basiert ausschließlich aus Anpassungen mit dem Bootstrap-Framework. Grund hierfür ist die hohe Benutzerfreundlichkeit und intuitive Bedienbarkeit. Des Weiteren erleichtert die Verwendung dieses Frameworks die Anwendungsentwicklung, da dank bereits bestehenden  Außerdem wird so ein einheitliches Layout und Design ermöglicht und unterstützt. Das Layout der Web-Anwendung ist sehr schlicht gehalten, sodass die Aufmerksamkeit der Nutzer auf den Inhalt gerichtet wird.
 
 Folgende Bootstrap Komponenten wurden für die Entwicklung der grafischen Oberfläche verwendet:
 
@@ -123,4 +158,9 @@ Folgende Bootstrap Komponenten wurden für die Entwicklung der grafischen Oberfl
 - Bootstrap Navbar
 - ...
 
-Werte aus den Bootstrap-Forms werden mithilfe von JQuery abgefragt. Dabei werden...
+Werte aus den Bootstrap-Forms werden mithilfe von JQuery abgefragt.
+
+Hinter Buttons verbergen sich weitere Funktionen. Die Buttons sind mit ActionListenern versehen, die auf Klicken reagieren und anschließend die gewollte Aktion ausführen. Das kann beispielsweise das Hinzufügen oder Löschen einer Aufgabe sein.
+Bei dem Attribut "Status" der einzelnen Aufgaben ist ebenfalls ein ActionListener hinterlegt. Dieser reagiert auf Veränderungen. In diesem Fall wäre das eine Statusänderung. Wird eine solche registriert, wird die Veränderung weiter verarbeitet. 
+Bei der Registrierung eines neuen Nutzers reagiert ein EventListener auf ein "Submit"-Signal, welches durch Klicken auf einen Button gesendet wird.
+
