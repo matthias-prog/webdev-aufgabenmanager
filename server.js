@@ -26,24 +26,6 @@ app.get("/benutzer", async (req, res) => {
   res.json(rows);
 });
 
-
-app.post("/register", async (req, res) => {
-  const [
-    rows,
-  ] = await connection.execute(
-    "INSERT INTO benutzer (benutzerName, email, passwort) VALUES (?, ?, ?)",
-    [req.body.benutzerName, req.body.email, req.body.passwort]
-  );
-
-  res.json({
-    id: rows.insertId,
-    benutzerName: req.body.benutzerName,
-    email: req.body.email,
-    passwort: req.body.passwort,
-  });
-});
-
-
 app.post("/login", async (req, res) => {
 
   try {
