@@ -74,6 +74,7 @@ Bekommt die Route /benutzer eine Anfrage, wird folgende Antwort zurückgesendet:
    "passwort":"supersecret"}
 ]
 ``
+
 Wenn der Client eine Anfrage an die Route /aufgaben in Form einer POST-Methode sendet, wird diese folgendermaßen beantwortet:
 
 ``
