@@ -26,7 +26,7 @@ app.get("/benutzer", async (req, res) => {
   res.json(rows);
 });
 
-app.post("/login", async (req, res) => {
+app.post("/benutzer/login", async (req, res) => {
 
   try {
     const [rows] = await connection.execute("SELECT * FROM benutzer WHERE email = ? AND passwort = ?", [req.body.email, req.body.passwort]);
