@@ -12,7 +12,7 @@ form.addEventListener("submit", (evt) => {
 
     };
 
-    fetch("/login", {
+    fetch("/benutzer/login", {
         method: "POST",
         body: JSON.stringify(values),
         headers: {

@@ -46,13 +46,58 @@ Das Backend beinhaltet die Logik der Anwendung und ist Bindeglied zwischen Front
 Die Datenbank verwendet die MySQL-Technologie. In ihr sind die Datensätze für die Anwendung gespeichert. Aufgebaut ist die Datenbank aus zwei Tabellen. Je eine Tabelle pro Anwendungsfunktion (Aufgabenmanager & Benutzerverwaltung).
 
 ### Datenmodell
-*Beispiel JSON für alle verwendeten Datenmodelle*
+
+Um unsere Daten zwischen Client und Server auszutauschen, haben wir uns für das JSON-Format entschieden.
+
+Sobald unsere Express-Anwendung mit der Route /aufgaben eine HTTP-Anfrage in Form einer GET-Methode bekommt,
+sendet sie folgende Antwort im JSON-Format zurück:
 
 ``
 [
-  { "id": 1, "title": "TODO STUFF" },
-  { "id": 2, "title": "TODO MORE STUFF" }
+  {"id": 1,
+   "aufgabenName":"title",
+   "erstelldatum":"date",
+   "abgabedatum":"date",
+   "beschreibung":"description",
+   "stand": 1,
+   "benutzerID": 1}
 ]
+``
+
+Bekommt die Route /benutzer eine Anfrage, wird folgende Antwort zurückgesendet:
+
+``
+[
+  {"id": 1,
+   "benutzerName":"name",
+   "email":"mail@example.com",
+   "passwort":"supersecret"}
+]
+``
+
+Wenn der Client eine Anfrage an die Route /aufgaben in Form einer POST-Methode sendet, wird diese folgendermaßen beantwortet:
+
+``
+ [
+   {id: rows.insertId,
+    aufgabenName: req.body.aufgabenName,
+    erstelldatum: req.body.erstelldatum,
+    abgabedatum: req.body.abgabedatum,
+    beschreibung: req.body.beschreibung,
+    stand: req.body.stand,
+    benutzerID: req.body.benutzerID}
+ ]
+ ``
+
+ Sendet er eine Anfrage an /benutzer, gibt der Server diese JSON-Antwort zurück:
+
+ ``
+   [
+    {id: rows.insertId,
+     benutzerName: req.body.benutzerName,
+     email: req.body.email,
+     passwort: req.body.passwort}
+   ]
 ``
 
 ### REST Services (Backend)
