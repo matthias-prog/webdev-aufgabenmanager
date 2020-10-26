@@ -55,13 +55,16 @@ sendet sie folgende Antwort im JSON-Format zurück:
 ``
 [
   {"id": 1,
-   "aufgabenName":"title",
-   "erstelldatum":"date",
-   "abgabedatum":"date",
-   "beschreibung":"description",
-   "stand": 1,
+   "aufgabenName": "Erstellung einer Präsentation",
+   "erstelldatum": "31.10.2020",
+   "abgabedatum": "07.11.2020",
+   "beschreibung": "Erstellen aller Präsentationsfolien mit Hilfe von PowerPoint",
+   "stand": 2,
    "benutzerID": 1}
 ]
+
+Anmerkung: Der Stand kann die Werte 0, 1, 2 oder 3 annehmen, welche jeweils den Status der Aufgabe beschreiben
+(vorgeschlagen, abgebrochen, in Arbeit, erledigt).
 ``
 
 Bekommt die Route /benutzer eine Anfrage, wird folgende Antwort zurückgesendet:
@@ -69,9 +72,9 @@ Bekommt die Route /benutzer eine Anfrage, wird folgende Antwort zurückgesendet:
 ``
 [
   {"id": 1,
-   "benutzerName":"name",
-   "email":"mail@example.com",
-   "passwort":"supersecret"}
+   "benutzerName": "Max Müller",
+   "email": "mail@example.com",
+   "passwort": "supersecret"}
 ]
 ``
 
@@ -79,13 +82,13 @@ Wenn der Client eine Anfrage an die Route /aufgaben in Form einer POST-Methode s
 
 ``
  [
-   {id: rows.insertId,
-    aufgabenName: req.body.aufgabenName,
-    erstelldatum: req.body.erstelldatum,
-    abgabedatum: req.body.abgabedatum,
-    beschreibung: req.body.beschreibung,
-    stand: req.body.stand,
-    benutzerID: req.body.benutzerID}
+   {"id": 2,
+    "aufgabenName": "Fertigstellung des Projekts",
+    "erstelldatum": "25.09.2020",
+    "abgabedatum": "30.10.2020",
+    "beschreibung": "Erledigen aller noch ausstehenden Aufgaben",
+    "stand": 2,
+    "benutzerID": 2}
  ]
  ``
 
@@ -93,10 +96,10 @@ Wenn der Client eine Anfrage an die Route /aufgaben in Form einer POST-Methode s
 
  ``
    [
-    {id: rows.insertId,
-     benutzerName: req.body.benutzerName,
-     email: req.body.email,
-     passwort: req.body.passwort}
+    {"id": 2,
+     "benutzerName": "Max Mustermann",
+     "email": "example@mail.com",
+     "passwort": "mypassword"}
    ]
 ``
 
