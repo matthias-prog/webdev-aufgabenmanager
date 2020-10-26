@@ -123,6 +123,6 @@ Folgende Bootstrap Komponenten wurden für die Entwicklung der grafischen Oberfl
 Werte aus den Bootstrap-Forms werden mithilfe von JQuery abgefragt.
 
 Hinter Buttons verbergen sich weitere Funktionen. Die Buttons sind mit ActionListenern versehen, die auf Klicken reagieren und anschließend die gewollte Aktion ausführen. Das kann beispielsweise das Hinzufügen oder Löschen einer Aufgabe sein.
-Bei dem Attribut "Status" der einzelnen Aufgaben ist ebenfalls ein ActionListener hinterlegt. Dieser reagiert auf Veränderungen. In diesem Fall wäre das eine Statusänderung. Wir eine solche registriert, wird die Veränderung weiter verarbeitet. 
+Bei dem Attribut "Status" der einzelnen Aufgaben ist ebenfalls ein ActionListener hinterlegt. Dieser reagiert auf Veränderungen. In diesem Fall wäre das eine Statusänderung. Wird eine solche registriert, wird die Veränderung weiter verarbeitet. 
 Bei der Registrierung eines neuen Nutzers reagiert ein EventListener auf ein "Submit"-Signal, welches durch Klicken auf einen Button gesendet wird.
 
