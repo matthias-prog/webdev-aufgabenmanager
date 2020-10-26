@@ -107,37 +107,37 @@ In der Anwendung gibt es eine grobe Einteilung in REST-Routen, die etwas mit Auf
 
 REST Routen Aufgaben:
 
-app.get("/aufgaben", async (req, res) =>
-Führt ein SELECT Statement, um die Datensätze der Tabelle „Aufgaben“ zu holen aus.
+- GET Route auf "/aufgaben" =>
+Führt ein SELECT SQL-Statement aus, um die Datensätze der Tabelle „Aufgaben“ zu holen.
 
-app.post("/aufgaben", async (req, res) =>
-Führt ein INSERT INTO Statement zum Einfügen neuer Aufgaben in die Tabelle „Aufgaben“ aus.
+- POST Route auf "/aufgaben" =>
+Führt ein INSERT INTO SQL-Statement zum Einfügen neuer Aufgaben in die Tabelle „Aufgaben“ aus.
 
-app.put("/aufgaben", async (req, res) =>
-Führt ein SELECT Statement aus, um den gewünschten Datensatz der Tabelle „Aufgaben“ zu laden. Anschließend werden je nach Anzahl der Änderungen bis zu vier UPDATE Statements ausgeführt, um die Datensätze gemäß den Änderungen anzupassen.
+- PUT Route auf "/aufgaben" =>
+Führt ein SELECT SQL-Statement aus, um den gewünschten Datensatz der Tabelle „Aufgaben“ zu laden. Anschließend werden je nach Anzahl der Änderungen bis zu vier UPDATE Statements ausgeführt, um die Datensätze gemäß den Änderungen anzupassen.
 
-app.delete("/aufgaben/:id", async (req, res) =>
-Führt ein DELETE Statement aus, um einen gewünschten Datensatz der Tabelle „Aufgaben“ zu entfernen.
+- DELETE Route auf "/aufgaben/:id" =>
+Führt ein DELETE SQL-Statement aus, um einen gewünschten Datensatz der Tabelle „Aufgaben“ zu entfernen.
 
-app.patch("/aufgaben/:id/:status", async (req, res) =>
-Führt ein UPDATE Statement aus, um den Stand (vorgeschlagen, abgebrochen, in Arbeit oder erledigt) einer Aufgabe zu aktualisieren.
+- PATCH Route auf "/aufgaben/:id/:status" =>
+Führt ein UPDATE SQL-Statement aus, um den Stand (vorgeschlagen, abgebrochen, in Arbeit oder erledigt) einer Aufgabe zu aktualisieren.
 
 REST Routen Benutzer:
 
-app.get("/benutzer", async (req, res) =>
-Führt ein SELECT Statement aus, um die Datensätze der Tabelle „Benutzer“ zu holen.
+- GET Route auf "/benutzer" =>
+Führt ein SELECT SQL-Statement aus, um die Datensätze der Tabelle „Benutzer“ zu holen.
 
-app.post("/benutzer/login", async (req, res) =>
-Führt ein SELECT Statement aus, um zu überprüfen ob eine eingegebene E-Mail-Adresse und ein eigegebenes Passwort mit einem Eintrag in der Tabelle „Benutzer“ übereinstimmt.
+- POST Route auf "/benutzer/login" =>
+Führt ein SELECT SQL-Statement aus, um zu überprüfen ob eine eingegebene E-Mail-Adresse und ein eigegebenes Passwort mit einem Eintrag in der Tabelle „Benutzer“ übereinstimmt.
 
-app.post("/benutzer", async (req, res) =>
-Führt ein INSERT INTO Statement zum Einfügen neuer Benutzer in die Tabelle „Benutzer“ aus.
+- POST Route auf "/benutzer" =>
+Führt ein INSERT INTO SQL-Statement zum Einfügen neuer Benutzer in die Tabelle „Benutzer“ aus.
 
-app.delete("/benutzer/:id", async (req, res) =>
-Führt ein DELETE Statement aus, um einen gewünschten Datensatz der Tabelle „Benutzer“ zu entfernen.
+- DELETE Route auf "/benutzer/:id" =>
+Führt ein DELETE SQL-Statement aus, um einen gewünschten Datensatz der Tabelle „Benutzer“ zu entfernen.
 
-app.put("/benutzer", async (req, res) =>
-Führt ein SELECT Statement aus, um den gewünschten Datensatz der Tabelle „Benutzer“ zu laden. Anschließend werden je nach Anzahl der Änderungen bis zu drei UPDATE Statements ausgeführt, um die Datensätze gemäß den Änderungen anzupassen.
+- PUT Route auf "/benutzer" =>
+Führt ein SELECT SQL-Statement aus, um den gewünschten Datensatz der Tabelle „Benutzer“ zu laden. Anschließend werden je nach Anzahl der Änderungen bis zu drei UPDATE Statements ausgeführt, um die Datensätze gemäß den Änderungen anzupassen.
 
 
 ### Frontend
