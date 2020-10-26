@@ -62,10 +62,10 @@ sendet sie folgende Antwort im JSON-Format zurück:
    "stand": 2,
    "benutzerID": 1}
 ]
+``
 
 Anmerkung: Der Stand kann die Werte 0, 1, 2 oder 3 annehmen, welche jeweils den Status der Aufgabe beschreiben
 (vorgeschlagen, abgebrochen, in Arbeit, erledigt).
-``
 
 Bekommt die Route /benutzer eine Anfrage, wird folgende Antwort zurückgesendet:
 
