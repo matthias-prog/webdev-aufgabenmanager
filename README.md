@@ -115,15 +115,19 @@ Führt ein SELECT SQL-Statement aus, um die Datensätze der Tabelle „Aufgaben�
 
 - POST Route auf "/aufgaben" =>
 Führt ein INSERT INTO SQL-Statement zum Einfügen neuer Aufgaben in die Tabelle „Aufgaben“ aus.
+Wenn ein Error auftritt in dieser Route, wird der HTTP Status Code 500 (Internal Server Error) gesendet mit der Fehlermeldung 'Hinzufügen fehlgeschlagen'.
 
 - PUT Route auf "/aufgaben" =>
-Führt ein SELECT SQL-Statement aus, um den gewünschten Datensatz der Tabelle „Aufgaben“ zu laden. Anschließend werden je nach Anzahl der Änderungen bis zu vier UPDATE Statements ausgeführt, um die Datensätze gemäß den Änderungen anzupassen.
+Führt ein SELECT SQL-Statement aus, um den gewünschten Datensatz der Tabelle „Aufgaben“ zu laden. Anschließend werden je nach Anzahl der Änderungen bis zu vier UPDATE Statements ausgeführt, um die Datensätze gemäß den Änderungen anzupassen. 
+Wenn die Update Statements erfolgreich ausgeführt wird, wird der HTTP Status Code 200 (OK) gesendet. Wenn ein Error auftritt in dieser Route, wird der HTTP Status Code 500 (Internal Server Error) gesendet mit der Fehlermeldung 'Update fehlgeschlagen'.
 
 - DELETE Route auf "/aufgaben/:id" =>
 Führt ein DELETE SQL-Statement aus, um einen gewünschten Datensatz der Tabelle „Aufgaben“ zu entfernen.
+Wenn der gewünschte Datensatz der Tabelle „Aufgaben“ gelöscht wurde, wird der HTTP Status Code 200 (OK) gesendet. Wenn der gewünschte Datensatz der Tabelle „Aufgaben“ nicht gelöscht werden konnte, wird der HTTP Status Code 404 (Not Found) gesendet.
 
 - PATCH Route auf "/aufgaben/:id/:status" =>
 Führt ein UPDATE SQL-Statement aus, um den Stand (vorgeschlagen, abgebrochen, in Arbeit oder erledigt) einer Aufgabe zu aktualisieren.
+Wenn der Stand einer Aufgabe erfolgreich aktualisiert wurde, wird der HTTP Status Code 200 (OK) gesendet. Wenn ein Error auftritt in dieser Route, wird der HTTP Status Code 500 (Internal Server Error) gesendet.
 
 REST Routen Benutzer:
 
@@ -132,15 +136,19 @@ Führt ein SELECT SQL-Statement aus, um die Datensätze der Tabelle „Benutzer�
 
 - POST Route auf "/benutzer/login" =>
 Führt ein SELECT SQL-Statement aus, um zu überprüfen ob eine eingegebene E-Mail-Adresse und ein eigegebenes Passwort mit einem Eintrag in der Tabelle „Benutzer“ übereinstimmt.
+Wenn die E-Mail-Adresse und das Passwort mit der Tabelle „Benutzer“ übereinstimmt, wird der HTTP Status Code 200 (OK) gesendet. Wenn die E-Mail-Adresse und das Passwort mit der Tabelle „Benutzer“ nicht übereinstimmt, wird der HTTP Status Code 401 (Unauthorized) gesendet. Wenn ein Error auftritt in dieser Route, wird der HTTP Status Code 500 (Internal Server Error) gesendet mit der Fehlermeldung 'Login fehlgeschlagen'.
 
 - POST Route auf "/benutzer" =>
 Führt ein INSERT INTO SQL-Statement zum Einfügen neuer Benutzer in die Tabelle „Benutzer“ aus.
+Wenn ein Error auftritt in dieser Route, wird der HTTP Status Code 500 (Internal Server Error) gesendet mit der Fehlermeldung 'Hinzufügen fehlgeschlagen'.
 
 - DELETE Route auf "/benutzer/:id" =>
 Führt ein DELETE SQL-Statement aus, um einen gewünschten Datensatz der Tabelle „Benutzer“ zu entfernen.
+Wenn der gewünschte Datensatz der Tabelle „Benutzer“ gelöscht wurde, wird der HTTP Status Code 200 (OK) gesendet. Wenn der gewünschte Datensatz der Tabelle „Benutzer“ nicht gelöscht werden konnte, wird der HTTP Status Code 404 (Not Found) gesendet.
 
 - PUT Route auf "/benutzer" =>
 Führt ein SELECT SQL-Statement aus, um den gewünschten Datensatz der Tabelle „Benutzer“ zu laden. Anschließend werden je nach Anzahl der Änderungen bis zu drei UPDATE Statements ausgeführt, um die Datensätze gemäß den Änderungen anzupassen.
+Wenn der gewünschte Datensatz der Tabelle „Benutzer“ erfolgreich geladen wurde, wird der HTTP Status Code 200 (OK) gesendet. Wenn ein Error auftritt in dieser Route, wird der HTTP Status Code 500 (Internal Server Error) gesendet mit der Fehlermeldung 'Update fehlgeschlagen'.
 
 
 ### Frontend
